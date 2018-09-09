@@ -1,0 +1,8 @@
+main: net.development.meetup.Main
+name: Mmeetup
+version: 1.0
+author: LeeGod
+commands:
+  vote:
+  team:
+  lang:
