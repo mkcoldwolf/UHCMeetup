@@ -45,6 +45,7 @@ import net.development.meetup.Lang;
 import net.development.meetup.Main;
 import net.development.meetup.enums.Status;
 import net.development.meetup.manager.KitManager;
+import net.development.meetup.manager.PlayerManager;
 import net.development.meetup.scenarios.ScenariosEnable;
 import net.development.meetup.util.SpecInv;
 import net.md_5.bungee.api.ChatColor;
@@ -159,6 +160,20 @@ public class GameListener implements Listener {
 				return;
 			}
 			using.add(p.getUniqueId());
+			Bukkit.getScheduler().scheduleAsyncDelayedTask(Main.get(), new Runnable() {
+				@Override
+				public void run() {
+					using.remove(p.getUniqueId());
+				}
+			}, 60l);
+		}else if(e.getItem().equals(KitManager.DbOn) || e.getItem().equals(KitManager.DbOff)) {
+			
+			if(using.contains(p.getUniqueId())) {
+				p.sendMessage("§c冷卻中...");
+				return;
+			}
+			using.add(p.getUniqueId());
+			PlayerManager.setPlayerDBMode(p);
 			Bukkit.getScheduler().scheduleAsyncDelayedTask(Main.get(), new Runnable() {
 				@Override
 				public void run() {

@@ -1,6 +1,7 @@
 package net.development.meetup;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -61,14 +62,30 @@ public class Main extends JavaPlugin {
 		am.preparegameManager();
 		Commands cmd = new Commands();
 		this.getCommand("vote").setExecutor(cmd);
-		if(TeamMode)this.getCommand("team").setExecutor(cmd);
+		if (TeamMode)
+			this.getCommand("team").setExecutor(cmd);
 		this.getCommand("lang").setExecutor(cmd);
 		VisualRunnable.init(this);
 		SQLConnection conn = new SQLConnection("127.0.0.1", 3306, "root", "mitwsdriverpass", "language");
-		if(!conn.connect()) {
+		if (!conn.connect()) {
 			Bukkit.broadcastMessage(":(");
 		}
 		lang = new MitwLanguage(LangType.CLASS, this, conn, new Lang());
+	}
+
+	@Override
+	public void onDisable() {
+		ArrayList<String> temp = new ArrayList<>();
+		for (UUID u : getGM().debugModePlayers.keySet()) {
+			if (getGM().debugModePlayers.get(u) == true)
+				temp.add(u.toString());
+		}
+		Lang.dataConfig.set("debugmodes", temp);
+		try {
+			Lang.dataConfig.save(Lang.data);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static void putPlayerName(UUID uuid, String name) {
@@ -101,7 +118,8 @@ public class Main extends JavaPlugin {
 		pm.registerEvents(new WBListener(), this);
 		pm.registerEvents(new QuitListener(), this);
 		pm.registerEvents(new DeathListener(), this);
-		if(TeamMode)pm.registerEvents(new GUIListener(), this);
+		if (TeamMode)
+			pm.registerEvents(new GUIListener(), this);
 	}
 
 	public List<UUID> getOnlinePlayers() {
@@ -126,7 +144,7 @@ public class Main extends JavaPlugin {
 	public static KitManager getKM() {
 		return km;
 	}
-	
+
 	public MitwLanguage getLang() {
 		return lang;
 	}

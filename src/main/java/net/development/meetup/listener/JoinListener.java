@@ -31,19 +31,20 @@ public class JoinListener implements Listener {
 		case LOADING:
 			break;
 		case WAITING:
+			if (!Main.getGM().debugModePlayers.containsKey(p.getUniqueId())
+					&& Lang.dataConfig.getList("debugmodes").contains(p.getUniqueId().toString()))
+				Main.getGM().debugModePlayers.put(p.getUniqueId(), true);
 			Main.getGM().setCleanPlayerLobby(p, GameMode.SURVIVAL);
 			Main.getGM().sendToLobby(p);
 			PlayerManager.setPlayerSolo(p);
 			Main.getGM().checkStart();
-			for(Player pl : Bukkit.getOnlinePlayers()) {
-				pl.sendMessage(Lang.PREFIX+Main.get().getLang().translate(pl, "CASTJOIN")
-						.replaceAll("&", "§")
-						.replaceAll("<current>", String.valueOf(Main.getGM().players.size()))
-						.replaceAll("<player>", p.getDisplayName())
+			for (Player pl : Bukkit.getOnlinePlayers()) {
+				pl.sendMessage(Lang.PREFIX + Main.get().getLang().translate(pl, "CASTJOIN").replaceAll("&", "§")
+						.replaceAll("<current>", String.valueOf(Main.getGM().players.size())).replaceAll("<player>", p.getDisplayName())
 						.replaceAll("<max>", Main.get().getConfig().getString("Max-Player")));
 			}
 			e.setJoinMessage(null);
-			for(int i = 0; i < 30;i++) {
+			for (int i = 0; i < 30; i++) {
 				p.sendMessage(" ");
 			}
 			List<String> join = Main.get().getLang().translateArrays(p, "JOIN");
@@ -54,7 +55,7 @@ public class JoinListener implements Listener {
 				@Override
 				public void run() {
 					new SMenu(p).o(p);
-					if(!Main.getGM().isBroadcasted()) {
+					if (!Main.getGM().isBroadcasted()) {
 						Main.getGM().openBroadcast();
 						Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "bungee broadcast meetup");
 					}

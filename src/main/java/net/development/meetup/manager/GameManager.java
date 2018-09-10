@@ -24,6 +24,7 @@ public class GameManager {
 
 	public List<UUID> players = new ArrayList<>();
 	public List<UUID> spectators = new ArrayList<>();
+	public Map<UUID, Boolean> debugModePlayers = new HashMap<>();
 	public int max;
 	private static int border;
 	public static Boolean isInDown = false;
@@ -40,11 +41,11 @@ public class GameManager {
 		Config.setBorder("world", i, 0, 0);
 		return border;
 	}
-	
+
 	public boolean isBroadcasted() {
 		return broadcasted;
 	}
-	
+
 	public void openBroadcast() {
 		broadcasted = true;
 	}
@@ -70,6 +71,9 @@ public class GameManager {
 			@Override
 			public void run() {
 				p.getInventory().setItem(0, KitManager.vote);
+				p.getInventory().setItem(7,
+						(debugModePlayers.containsKey(p.getUniqueId()) && debugModePlayers.get(p.getUniqueId()) == true) ? KitManager.DbOn
+								: KitManager.DbOff);
 				p.getInventory().setItem(8, KitManager.spec2);
 				if (Main.TeamMode) {
 					p.getInventory().setItem(1, KitManager.team);

@@ -1,9 +1,37 @@
 package net.development.meetup;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
+import org.bukkit.configuration.file.YamlConfiguration;
+
 public class Lang {
+	static {
+		setupFile();
+	}
+	public static File data;
+	public static YamlConfiguration dataConfig;
+	
+	
+	private static void setupFile() {
+		data = completeCreateFiles(data, "playerdata.yml");
+		dataConfig = YamlConfiguration.loadConfiguration(data);
+	}
+
+	public static File completeCreateFiles(File file, String name) {
+		file = new File(Main.get().getDataFolder(), name);
+		if (!file.exists())
+			try {
+				file.createNewFile();
+				Main.get().saveResource(name, true);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		return file;
+	}
 
 	public static String headName = "§6GoldenHead §7(§6金頭顱§7)";
 	public static String Title = "&6&lMitw &7| &fMeetup";
