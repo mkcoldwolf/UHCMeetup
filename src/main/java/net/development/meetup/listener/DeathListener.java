@@ -22,6 +22,7 @@ import net.development.meetup.manager.KitManager;
 import net.development.meetup.manager.PlayerManager;
 import net.development.meetup.options.checkWin;
 import net.development.meetup.scenarios.ScenariosEnable;
+import net.development.meetup.task.DebugTask;
 
 public class DeathListener implements Listener {
 
@@ -44,6 +45,9 @@ public class DeathListener implements Listener {
 				PlayerManager.setPlayerSpec(p);
 			}
 		}.runTaskLater(Main.get(), 2L);
+		Player killer = p.getKiller();
+		if (Main.getGM().debugModePlayers.containsKey(killer.getUniqueId()) && Main.getGM().debugModePlayers.get(killer.getUniqueId()) == true)
+			new DebugTask(killer).runTaskTimerAsynchronously(Main.get(), 0, 20 * 1);
 		checkWin.checkWins();
 		if (Main.getGM().players.size() <= 5 && !(Main.getGM().players.size() <= 1)) {
 			for (Player player : Bukkit.getOnlinePlayers()) {
@@ -65,20 +69,20 @@ public class DeathListener implements Listener {
 			} else if (((Arrow) ev.getDamager()).getShooter() instanceof Player) {
 				p1 = (Player) ((Arrow) ev.getDamager()).getShooter();
 			} else {
-				Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', "&c" + p.getName() + "&8[&f"
-						+ Main.getGM().getData.get(p.getUniqueId()).getKills() + "&8]&7 死亡了!"));
+				Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&',
+						"&c" + p.getName() + "&8[&f" + Main.getGM().getData.get(p.getUniqueId()).getKills() + "&8]&7 死亡了!"));
 				return;
 			}
 			Main.getGM().getData.get(p1.getUniqueId()).addKills();
-			if(Main.TeamMode)Main.getGM().getData.get(p1.getUniqueId()).getTeam().kills++;
-			Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&',
-					"&c" + p.getName() + "&8[&f" + Main.getGM().getData.get(p.getUniqueId()).getKills() + "&8]&7 被 &a"
-							+ p1.getName() + "&8[&f" + Main.getGM().getData.get(p1.getUniqueId()).getKills()
-							+ "&8] &7殺死了!"));
+			if (Main.TeamMode)
+				Main.getGM().getData.get(p1.getUniqueId()).getTeam().kills++;
+			Bukkit.broadcastMessage(
+					ChatColor.translateAlternateColorCodes('&', "&c" + p.getName() + "&8[&f" + Main.getGM().getData.get(p.getUniqueId()).getKills()
+							+ "&8]&7 被 &a" + p1.getName() + "&8[&f" + Main.getGM().getData.get(p1.getUniqueId()).getKills() + "&8] &7殺死了!"));
 
 		} else {
-			Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', "&c" + p.getName() + "&8[&f"
-					+ Main.getGM().getData.get(p.getUniqueId()).getKills() + "&8]&7 死亡了!"));
+			Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&',
+					"&c" + p.getName() + "&8[&f" + Main.getGM().getData.get(p.getUniqueId()).getKills() + "&8]&7 死亡了!"));
 		}
 
 	}
@@ -114,8 +118,8 @@ public class DeathListener implements Listener {
 					if (it <= 0) {
 						loc.getBlock().setType(Material.AIR);
 						loc.add(1.0, 0.0, 0.0).getBlock().setType(Material.AIR);
-						loc.getWorld().createExplosion((double) loc.getBlockX() + 0.5, (double) loc.getBlockY() + 0.5,
-								(double) loc.getBlockZ() + 0.5, 3.5f, false, true);
+						loc.getWorld().createExplosion((double) loc.getBlockX() + 0.5, (double) loc.getBlockY() + 0.5, (double) loc.getBlockZ() + 0.5,
+								3.5f, false, true);
 						loc.getWorld().strikeLightning(loc);
 						cancel();
 						return;
@@ -130,7 +134,7 @@ public class DeathListener implements Listener {
 				Player killer = e.getEntity().getKiller();
 				killer.sendMessage(Main.get().getLang().translate(killer, "noCleanStart"));
 				UHCPlayer uk = Main.getGM().getData.get(killer.getUniqueId());
-				if(uk != null) {
+				if (uk != null) {
 					if (uk.isNoClean())
 						return;
 					uk.setNoCleanTimer(20);

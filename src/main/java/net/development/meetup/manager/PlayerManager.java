@@ -45,7 +45,7 @@ public class PlayerManager {
 
 	public static void setPlayerDBMode(Player p) {
 		UUID u = p.getUniqueId();
-		if (Main.getGM().debugModePlayers.get(u) == true) {
+		if (Main.getGM().debugModePlayers.containsKey(u) && Main.getGM().debugModePlayers.get(u) == true) {
 			Main.getGM().debugModePlayers.put(u, false);
 			p.sendMessage(Tools.colored(Lang.PREFIX + "&fCleanup DeBug&c關閉"));
 			p.getInventory().setItem(7, KitManager.DbOff);
