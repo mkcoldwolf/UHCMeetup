@@ -51,7 +51,7 @@ import net.development.meetup.util.SpecInv;
 import net.md_5.bungee.api.ChatColor;
 
 public class GameListener implements Listener {
-	
+
 	private static List<UUID> using = new ArrayList<>();
 
 	@EventHandler
@@ -101,7 +101,7 @@ public class GameListener implements Listener {
 			e.setCancelled(true);
 		if (e.getItem() == null || e.getItem().getType().equals(Material.AIR))
 			return;
-		Player p = e.getPlayer();
+		final Player p = e.getPlayer();
 		if (e.getItem().equals(KitManager.vote)) {
 			p.performCommand("vote");
 		} else if(e.getItem().equals(KitManager.lang)) {
@@ -116,17 +116,12 @@ public class GameListener implements Listener {
 				return;
 			}
 			using.add(p.getUniqueId());
-			Random rand = new Random();
-			List<Player> players = new ArrayList<>(Bukkit.getOnlinePlayers());
+			final Random rand = new Random();
+			final List<Player> players = new ArrayList<>(Bukkit.getOnlinePlayers());
 			Main.getGM().spectators.forEach(u -> players.remove(Bukkit.getPlayer(u)));
-			Player target = players.get(rand.nextInt(players.size()));
+			final Player target = players.get(rand.nextInt(players.size()));
 			p.teleport(target);
-			Bukkit.getScheduler().scheduleAsyncDelayedTask(Main.get(), new Runnable() {
-				@Override
-				public void run() {
-					using.remove(p.getUniqueId());
-				}
-			}, 60l);
+			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.get(), () -> using.remove(p.getUniqueId()), 60l);
 		} else if (e.getItem().equals(KitManager.spec2)) {
 			Main.getGM().sendToServer(p);
 			if(using.contains(p.getUniqueId())) {
@@ -134,12 +129,7 @@ public class GameListener implements Listener {
 				return;
 			}
 			using.add(p.getUniqueId());
-			Bukkit.getScheduler().scheduleAsyncDelayedTask(Main.get(), new Runnable() {
-				@Override
-				public void run() {
-					using.remove(p.getUniqueId());
-				}
-			}, 60l);
+			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.get(), () -> using.remove(p.getUniqueId()), 60l);
 		} else if(e.getItem().equals(KitManager.team)) {
 			p.performCommand("team");
 			if(using.contains(p.getUniqueId())) {
@@ -147,12 +137,7 @@ public class GameListener implements Listener {
 				return;
 			}
 			using.add(p.getUniqueId());
-			Bukkit.getScheduler().scheduleAsyncDelayedTask(Main.get(), new Runnable() {
-				@Override
-				public void run() {
-					using.remove(p.getUniqueId());
-				}
-			}, 60l);
+			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.get(), () -> using.remove(p.getUniqueId()), 60l);
 		}else if(e.getItem().equals(KitManager.retunToArenaPvP)) {
 			Main.getGM().sendToPractice(p);
 			if(using.contains(p.getUniqueId())) {
@@ -160,26 +145,16 @@ public class GameListener implements Listener {
 				return;
 			}
 			using.add(p.getUniqueId());
-			Bukkit.getScheduler().scheduleAsyncDelayedTask(Main.get(), new Runnable() {
-				@Override
-				public void run() {
-					using.remove(p.getUniqueId());
-				}
-			}, 60l);
+			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.get(), () -> using.remove(p.getUniqueId()), 60l);
 		}else if(e.getItem().equals(KitManager.DbOn) || e.getItem().equals(KitManager.DbOff)) {
-			
+
 			if(using.contains(p.getUniqueId())) {
 				p.sendMessage("§c冷卻中...");
 				return;
 			}
 			using.add(p.getUniqueId());
 			PlayerManager.setPlayerDBMode(p);
-			Bukkit.getScheduler().scheduleAsyncDelayedTask(Main.get(), new Runnable() {
-				@Override
-				public void run() {
-					using.remove(p.getUniqueId());
-				}
-			}, 60l);
+			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.get(), () -> using.remove(p.getUniqueId()), 60l);
 		}
 	}
 
@@ -191,13 +166,13 @@ public class GameListener implements Listener {
 
 	@EventHandler
 	public void eatHead(PlayerItemConsumeEvent e) {
-		Player player = e.getPlayer();
+		final Player player = e.getPlayer();
 		if (Main.getGM().spectators.contains(player.getUniqueId()))
 			e.setCancelled(true);
 		if (e.getItem().getType().equals(Material.GOLDEN_APPLE) && e.getItem().getItemMeta().hasDisplayName()
 				&& e.getItem().getItemMeta().getDisplayName().contains(Lang.headName)) {
-			PotionEffect regen = new PotionEffect(PotionEffectType.REGENERATION, 20 * 10, 1);
-			PotionEffect abs = new PotionEffect(PotionEffectType.ABSORPTION, 20 * 120, 0);
+			final PotionEffect regen = new PotionEffect(PotionEffectType.REGENERATION, 20 * 10, 1);
+			final PotionEffect abs = new PotionEffect(PotionEffectType.ABSORPTION, 20 * 120, 0);
 			regen.apply(player);
 			abs.apply(player);
 		}
@@ -260,12 +235,12 @@ public class GameListener implements Listener {
 
 	@EventHandler
 	public void onClickToEntity(PlayerInteractEntityEvent e) {
-		Player p = e.getPlayer();
+		final Player p = e.getPlayer();
 		if (Main.getGM().spectators.contains(p.getUniqueId())) {
 			e.setCancelled(true);
-			Entity en = e.getRightClicked();
+			final Entity en = e.getRightClicked();
 			if (en != null && en instanceof Player && !Main.getGM().spectators.contains(((Player) en).getUniqueId())) {
-				Player target = (Player) en;
+				final Player target = (Player) en;
 				new SpecInv(target).o(p);
 			}
 		}
@@ -280,7 +255,7 @@ public class GameListener implements Listener {
 			}
 			return;
 		}
-		Player p = (Player) e.getEntity();
+		final Player p = (Player) e.getEntity();
 		if (Main.getGM().spectators.contains(p.getUniqueId())) {
 			e.setCancelled(true);
 			return;
@@ -290,7 +265,7 @@ public class GameListener implements Listener {
 			return;
 		}
 		if (e.getDamager() instanceof Player) {
-			Player k = (Player) e.getDamager();
+			final Player k = (Player) e.getDamager();
 			if (Main.getGM().spectators.contains(k.getUniqueId())) {
 				e.setCancelled(true);
 				return;
@@ -303,7 +278,7 @@ public class GameListener implements Listener {
 		}
 		if (!(e.getDamager() instanceof Arrow))
 			return;
-		Arrow a = (Arrow) e.getDamager();
+		final Arrow a = (Arrow) e.getDamager();
 		if (a.getShooter() instanceof Player) {
 			new BukkitRunnable() {
 				@Override
@@ -323,7 +298,7 @@ public class GameListener implements Listener {
 					return;
 				}
 				e.getPlayer().setItemInHand(new ItemStack(Material.AIR));
-				Horse horse = (Horse) Bukkit.getWorld("world").spawnEntity(e.getPlayer().getLocation(),
+				final Horse horse = (Horse) Bukkit.getWorld("world").spawnEntity(e.getPlayer().getLocation(),
 						EntityType.HORSE);
 				horse.setTamed(true);
 				horse.getInventory().setSaddle(new ItemStack(Material.SADDLE));
@@ -367,7 +342,7 @@ public class GameListener implements Listener {
 		}
 		if (ScenariosEnable.RodLessE) {
 			if (e.getEntity() instanceof FishHook && e.getEntity().getShooter() instanceof Player) {
-				Player p = (Player) e.getEntity().getShooter();
+				final Player p = (Player) e.getEntity().getShooter();
 				p.sendMessage("§cRodLess 是開啟的! 不能使用釣竿!");
 				p.playSound(p.getLocation(), Sound.ITEM_BREAK, 1f, 1f);
 				p.getInventory().remove(p.getItemInHand());
@@ -375,7 +350,7 @@ public class GameListener implements Listener {
 			}
 		}
 	}
-	
+
 	@EventHandler
 	public void onFire(EntityDamageEvent e) {
 		if(e.getEntity() instanceof Player && (ScenariosEnable.FireLessE || Main.getGM().getData.get(e.getEntity().getUniqueId()).isNoClean())

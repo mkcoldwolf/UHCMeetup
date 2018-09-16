@@ -20,7 +20,7 @@ public class PlayerManager {
 	}
 
 	public static void setPlayerSpec(Player p) {
-		for (Player p1 : Bukkit.getOnlinePlayers()) {
+		for (final Player p1 : Bukkit.getOnlinePlayers()) {
 			if (p1 != null && p1 != p) {
 				p1.hidePlayer(p);
 				if (Main.getGM().spectators.contains(p1.getUniqueId())) {
@@ -44,14 +44,14 @@ public class PlayerManager {
 	}
 
 	public static void setPlayerDBMode(Player p) {
-		UUID u = p.getUniqueId();
+		final UUID u = p.getUniqueId();
 		if (Main.getGM().debugModePlayers.containsKey(u) && Main.getGM().debugModePlayers.get(u) == true) {
 			Main.getGM().debugModePlayers.put(u, false);
-			p.sendMessage(Tools.colored(Lang.PREFIX + "&fCleanup DeBug&c關閉"));
+			p.sendMessage(Tools.colored(Lang.PREFIX + Main.get().getLang().translate(p, "cleandb-on")));
 			p.getInventory().setItem(7, KitManager.DbOff);
 		} else {
 			Main.getGM().debugModePlayers.put(u, true);
-			p.sendMessage(Tools.colored(Lang.PREFIX + "&fCleanup DeBug&a開啟"));
+			p.sendMessage(Tools.colored(Lang.PREFIX + Main.get().getLang().translate(p, "cleandb-off")));
 			p.getInventory().setItem(7, KitManager.DbOn);
 		}
 	}

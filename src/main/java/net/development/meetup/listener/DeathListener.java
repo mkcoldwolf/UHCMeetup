@@ -28,14 +28,13 @@ public class DeathListener implements Listener {
 
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPPDeath(PlayerDeathEvent e) {
-		Player p = (Player) e.getEntity();
+		final Player p = e.getEntity();
 		p.setHealth(20.0);
 		Main.getGM().players.remove(p.getUniqueId());
 		if (!ScenariosEnable.TimebombE) {
 			p.getWorld().dropItemNaturally(p.getLocation(), new ItemStack(Material.EXP_BOTTLE, 24));
 			p.getWorld().dropItemNaturally(p.getLocation(), KitManager.goldenHead(1));
 		}
-		p.getWorld().strikeLightningEffect(p.getLocation());
 		e.setDeathMessage(null);
 		executeDeathEvent(e);
 		Main.getGM().getData.get(p.getUniqueId()).setAlive(false);
@@ -45,20 +44,20 @@ public class DeathListener implements Listener {
 				PlayerManager.setPlayerSpec(p);
 			}
 		}.runTaskLater(Main.get(), 2L);
-		Player killer = p.getKiller();
+		final Player killer = p.getKiller();
 		if (Main.getGM().debugModePlayers.containsKey(killer.getUniqueId()) && Main.getGM().debugModePlayers.get(killer.getUniqueId()) == true)
 			new DebugTask(killer).runTaskTimerAsynchronously(Main.get(), 0, 20 * 1);
 		checkWin.checkWins();
 		if (Main.getGM().players.size() <= 5 && !(Main.getGM().players.size() <= 1)) {
-			for (Player player : Bukkit.getOnlinePlayers()) {
+			for (final Player player : Bukkit.getOnlinePlayers()) {
 				player.playSound(player.getLocation(), Sound.NOTE_PLING, 1, 1);
-				for (String a : Main.get().getLang().translateArrays(p, "ppl5BroadCast")) {
+				for (final String a : Main.get().getLang().translateArrays(p, "ppl5BroadCast")) {
 					player.sendMessage(ChatColor.translateAlternateColorCodes('&', a));
 				}
 			}
 		}
 		if (p.getLastDamageCause() instanceof EntityDamageByEntityEvent) {
-			EntityDamageByEntityEvent ev = (EntityDamageByEntityEvent) p.getLastDamageCause();
+			final EntityDamageByEntityEvent ev = (EntityDamageByEntityEvent) p.getLastDamageCause();
 			if (!(ev.getDamager() instanceof Player) && !(ev.getDamager() instanceof Arrow)) {
 				Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', "&c" + p.getName() + "&7 死亡了!"));
 				return;
@@ -89,15 +88,15 @@ public class DeathListener implements Listener {
 
 	private void executeDeathEvent(PlayerDeathEvent e) {
 		if (ScenariosEnable.TimebombE) {
-			Player player = e.getEntity();
-			Location loc = e.getEntity().getLocation();
+			final Player player = e.getEntity();
+			final Location loc = e.getEntity().getLocation();
 			player.getLocation().getBlock().setType(Material.CHEST);
 			player.getLocation().add(1.0, 0.0, 0.0).getBlock().setType(Material.CHEST);
 			player.getLocation().add(0.0, 1.0, 0.0).getBlock().setType(Material.AIR);
 			player.getLocation().add(1.0, 1.0, 0.0).getBlock().setType(Material.AIR);
-			Chest chest = (Chest) player.getLocation().getBlock().getState();
+			final Chest chest = (Chest) player.getLocation().getBlock().getState();
 			chest.getBlockInventory().setItem(3, player.getInventory().getBoots());
-			for (ItemStack item : e.getDrops()) {
+			for (final ItemStack item : e.getDrops()) {
 				if (item.getType() == null || item.getType().equals(Material.AIR)) {
 					continue;
 				}
@@ -118,7 +117,7 @@ public class DeathListener implements Listener {
 					if (it <= 0) {
 						loc.getBlock().setType(Material.AIR);
 						loc.add(1.0, 0.0, 0.0).getBlock().setType(Material.AIR);
-						loc.getWorld().createExplosion((double) loc.getBlockX() + 0.5, (double) loc.getBlockY() + 0.5, (double) loc.getBlockZ() + 0.5,
+						loc.getWorld().createExplosion(loc.getBlockX() + 0.5, loc.getBlockY() + 0.5, loc.getBlockZ() + 0.5,
 								3.5f, false, true);
 						loc.getWorld().strikeLightning(loc);
 						cancel();
@@ -131,9 +130,9 @@ public class DeathListener implements Listener {
 		}
 		if (ScenariosEnable.NoCleanE) {
 			if (e.getEntity().getKiller() != null) {
-				Player killer = e.getEntity().getKiller();
+				final Player killer = e.getEntity().getKiller();
 				killer.sendMessage(Main.get().getLang().translate(killer, "noCleanStart"));
-				UHCPlayer uk = Main.getGM().getData.get(killer.getUniqueId());
+				final UHCPlayer uk = Main.getGM().getData.get(killer.getUniqueId());
 				if (uk != null) {
 					if (uk.isNoClean())
 						return;

@@ -13,8 +13,8 @@ public class Lang {
 	}
 	public static File data;
 	public static YamlConfiguration dataConfig;
-	
-	
+
+
 	private static void setupFile() {
 		data = completeCreateFiles(data, "playerdata.yml");
 		dataConfig = YamlConfiguration.loadConfiguration(data);
@@ -26,7 +26,7 @@ public class Lang {
 			try {
 				file.createNewFile();
 				Main.get().saveResource(name, true);
-			} catch (IOException e) {
+			} catch (final IOException e) {
 				e.printStackTrace();
 			}
 
@@ -41,7 +41,7 @@ public class Lang {
 	public static String spec2 = "§b§l回到大廳 §7(Back to Hub)";
 	public static String vote = "§a§lScenarios投票 §7(Vote)";
 	public static String reTurnToPractice = "§6§l回到Practice分流 §7(Back to Practice)";
-	
+
 	public List<String> zh_tw_JOIN = Arrays.asList(
 			"&7&m------------------"
 			, " "
@@ -50,7 +50,7 @@ public class Lang {
 			, "&e意見回饋: &7https://goo.gl/pYStiJ"
 			, " "
 			, "&7&m------------------");
-	
+
 	public String zh_tw_CASTJOIN = " &6<player> &f加入了 §6Mitw§eMeetup &7(<current>/&c<max>&7)";
 	public String zh_tw_CASTQUIT = " &c<player> &f退出了 §6Mitw§eMeetup &7(<current>/&c<max>&7)";
 	public String zh_tw_NOPERM;
@@ -68,6 +68,9 @@ public class Lang {
 	public String zh_tw_bowLess = "§c§lBowLess 是開啟的! 你不能使用弓!";
 	public String zh_tw_noClean = "&f無敵時間: &6<cleanTime>";
 	public String zh_tw_choose = "&6&l你選擇了 &e&l中文 &6&l!";
+	public String zh_tw_cleandb_on = "&7- &6防止撿頭模式 &a&l開啟";
+	public String zh_tw_cleandb_off = "&7- &6防止撿頭模式 &c&l關閉";
+	public String zh_tw_death = "§c<player> §";
 	public String zh_tw_bow = "&c<player> 有 <health>";
 	public String zh_tw_s1 = "秒";
 	public String zh_tw_s2 = "秒";
@@ -116,7 +119,7 @@ public class Lang {
 			" ",
 			"&6&lMitw.Rip",
 			"&7&m---------------------------");
-	
+
 	public List<String> zh_tw_Rules = Arrays.asList(
 			"&7&m---------------------------",
 			"&f&l在5個人以下clean,&c&lBan除 2 小時",
@@ -128,11 +131,11 @@ public class Lang {
 			"&c&l開始禁止Clean up!",
 			"&c&l否則被檢舉,將Ban除2個小時",
 			"&c&m--------------------------------");
-	
+
 	/**
 	 * ENGLISH
 	 */
-	
+
 	public List<String> en_us_JOIN = Arrays.asList(
 			"&7&m------------------"
 			, " "
@@ -140,7 +143,7 @@ public class Lang {
 			, "&anew version is in beta!!!"
 			, " "
 			, "&7&m------------------");
-	
+
 	public String en_us_CASTJOIN = " &6<player> &fJoined §6Mitw§eMeetup &7(<current>/&c<max>&7)";
 	public String en_us_CASTQUIT = " &c<player> &fQuited §6Mitw§eMeetup &7(<current>/&c<max>&7)";
 	public String en_us_NOPERM;
@@ -159,6 +162,8 @@ public class Lang {
 	public String en_us_noClean = "&fNoClean: &6<cleanTime>";
 	public String en_us_choose = "&6&lYou choosed &e&lEnglish &6&l!";
 	public String en_us_bow = "&c<player> has <health>";
+	public String en_us_cleandb_on = "&7- &6Cleanup debug mode &a&lON";
+	public String en_us_cleandb_off = "&7- &6Cleanup debug mode &c&lOFF";
 	public String en_us_s1 = "second";
 	public String en_us_s2 = "seconds";
 	public String en_us_m1 = "minute";
@@ -206,7 +211,7 @@ public class Lang {
 			" ",
 			"&6&lMitw.Rip",
 			"&7&m---------------------------");
-	
+
 	public List<String> en_us_Rules = Arrays.asList(
 			"&7&m---------------------------",
 			"&f&lClean after 5 people remaining -> &c&lBan 2hr",

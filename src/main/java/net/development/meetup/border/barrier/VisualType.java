@@ -14,7 +14,7 @@ enum VisualType {
 				@SuppressWarnings("deprecation")
 				@Override
 				VisualBlockData generate(Player paramPlayer, Location paramLocation) {
-					return new VisualBlockData(Material.STAINED_GLASS, DyeColor.RED.getData());
+					return new VisualBlockData(Material.STAINED_GLASS, DyeColor.ORANGE.getData());
 				}
 			};
 			return blockFiller;
