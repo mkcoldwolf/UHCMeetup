@@ -103,7 +103,7 @@ public class GameListener implements Listener {
 			return;
 		final Player p = e.getPlayer();
 		if (e.getItem().equals(KitManager.vote)) {
-			p.performCommand("vote");
+			p.performCommand("mmeetup:vote");
 		} else if(e.getItem().equals(KitManager.lang)) {
 			p.performCommand("lang");
 		} else if (e.getItem().equals(KitManager.spec1)) {
@@ -355,8 +355,8 @@ public class GameListener implements Listener {
 	public void onFire(EntityDamageEvent e) {
 		if(e.getEntity() instanceof Player && (ScenariosEnable.FireLessE || Main.getGM().getData.get(e.getEntity().getUniqueId()).isNoClean())
 				&& (e.getCause().equals(DamageCause.FIRE)
-				|| e.getCause().equals(DamageCause.LAVA)
-				|| e.getCause().equals(DamageCause.FIRE_TICK))) {
+						|| e.getCause().equals(DamageCause.LAVA)
+						|| e.getCause().equals(DamageCause.FIRE_TICK))) {
 			e.setCancelled(true);
 		}
 	}
