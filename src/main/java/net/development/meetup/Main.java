@@ -158,6 +158,7 @@ public class Main extends JavaPlugin {
         canbreak.add(Material.LOG);
         canbreak.add(Material.LOG_2);
         canbreak.add(Material.OBSIDIAN);
+        canbreak.add(Material.ANVIL);
     }
 
 }

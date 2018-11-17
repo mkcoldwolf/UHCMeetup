@@ -50,9 +50,10 @@ public class KitManager {
         i.addItem(new ItemStack(Material.COOKED_BEEF, 64));
         i.addItem(new ItemStack(Material.ARROW, 32));
         i.addItem(new ItemStack(Material.ANVIL, 3));
+        i.addItem(new ItemStack(Material.DIAMOND_PICKAXE));
+        i.addItem(new ItemStack(Material.DIAMOND_AXE));
         if (new Random().nextInt(100) < 50)
             i.addItem(new ItemStack(Material.WEB, 3));
-
         if (new Random().nextInt(100) < 20)
             i.addItem(new ItemStack(Material.POTION, 1, (byte) 8226));
         else if (new Random().nextInt(100) < 20)
