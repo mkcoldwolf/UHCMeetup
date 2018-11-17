@@ -11,6 +11,7 @@ public class Lang {
 	static {
 		setupFile();
 	}
+
 	public static File data;
 	public static YamlConfiguration dataConfig;
 
@@ -139,28 +140,28 @@ public class Lang {
 	public List<String> en_us_JOIN = Arrays.asList(
 			"&7&m------------------"
 			, " "
-			, "&fWelcome to &6&lMitw&f&lMeetup &7[1.0]"
-			, "&anew version is in beta!!!"
+			, "&fWelcome to &6&lMitw&f&lMeetup"
+			, "&aHope you can have a great time."
 			, " "
 			, "&7&m------------------");
 
 	public String en_us_CASTJOIN = " &6<player> &fJoined §6Mitw§eMeetup &7(<current>/&c<max>&7)";
-	public String en_us_CASTQUIT = " &c<player> &fQuited §6Mitw§eMeetup &7(<current>/&c<max>&7)";
+	public String en_us_CASTQUIT = " &c<player> &fLeft §6Mitw§eMeetup &7(<current>/&c<max>&7)";
 	public String en_us_NOPERM;
 	public String en_us_NOBREAK = "§cYou are not allowed to break this block!!";
-	public String en_us_INGAME = PREFIX + "&cgame is started already! please wait for next game!!";
+	public String en_us_INGAME = PREFIX + "&cgame has started already! please wait for next game!!";
 	public String en_us_SCATTER_STARTING = PREFIX + "&fvote will end in &e <time> &fsecond(s) !";
 	public String en_us_STARTING = PREFIX + "&fthe game will start in &e <time> &fsecond(s)!";
-	public String en_us_Shirnk = PREFIX + "&fborder has been reduce to &e&l<border>x<border>&f !";
-	public String en_us_InShirnk = PREFIX + "&fwill be reduce at &e<time> &fto&e&l <border>x<border> &f!";
+	public String en_us_Shirnk = PREFIX + "&fborder has been reduced to &e&l<border>x<border>&f !";
+	public String en_us_InShirnk = PREFIX + "&fwill be reduced at &e<time> &fto&e&l <border>x<border> &f!";
 	public String en_us_scatterFinish = PREFIX + "§escatter finished!";
 	public String en_us_noCleanStart = "&a[No Clean] You have a 20 second invincibility timer!";
-	public String en_us_noCleanStop = "&c[No Clean] You are no longer have invincibility!";
-	public String en_us_airDropCountDown = "§7[§6Air§fDrop§7]§f the airdrop will drop at §e<time>秒 §fto §6x: <x> y: <y> z: <z> §f!";
-	public String en_us_airDrop = "§7[§6Air§fDrop§7]§f the airdrop has been dropped to §6x: <x> y: <y> z: <z> §f!";
-	public String en_us_bowLess = "§c§lBowLess is on! you're not allowed to use bow!";
+	public String en_us_noCleanStop = "&c[No Clean] You no longer have invincibility!";
+	public String en_us_airDropCountDown = "§7[§6Air§fDrop§7]§f the airdrop will be dropping after §e<time> seconds §fto §6x: <x> y: <y> z: <z> §f!";
+	public String en_us_airDrop = "§7[§6Air§fDrop§7]§f the airdrop has been dropped to §6x: <x> y: <y> z: <z> §f!";
+	public String en_us_bowLess = "§c§lBowLess is on! you're not allowed to use the bow!";
 	public String en_us_noClean = "&fNoClean: &6<cleanTime>";
-	public String en_us_choose = "&6&lYou choosed &e&lEnglish &6&l!";
+	public String en_us_choose = "&6&lYou chose &e&lEnglish &6&l!";
 	public String en_us_bow = "&c<player> has <health>";
 	public String en_us_cleandb_on = "&7- &6Cleanup debug mode &a&lON";
 	public String en_us_cleandb_off = "&7- &6Cleanup debug mode &c&lOFF";
@@ -214,13 +215,12 @@ public class Lang {
 
 	public List<String> en_us_Rules = Arrays.asList(
 			"&7&m---------------------------",
-			"&f&lClean after 5 people remaining -> &c&lBan 2hr",
+			"&f&lCleaning when there are 5 or less players remaining -> &c&lBan 2hr",
 			"&f&lTeaming in meetup ->&c&l Ban 3days",
 			"&7&m---------------------------");
 	public List<String> en_us_ppl5BroadCast = Arrays.asList(
 			"&c&m--------------------------------",
 			"&c&lYou can NOT clean now!",
-			"&c&lIT BAN ABLE FOR SURE!",
+			"&c&lYOU WILL BE BANNED!",
 			"&c&m--------------------------------");
-
 }

@@ -4,11 +4,11 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 public class SpecInv extends Menu {
-	
+
     public SpecInv(Player target) {
-    	
+
         super(target.getName().toString(), 6);
-                
+
         if (target.getInventory().getHelmet() != null) {
             this.s(0, ItemBuilder.createArmor(target.getInventory().getHelmet()));
         }
@@ -21,9 +21,9 @@ public class SpecInv extends Menu {
         if (target.getInventory().getBoots() != null) {
             this.s(3, ItemBuilder.createArmor(target.getInventory().getBoots()));
         }
-        
+
 //        s(8, ItemBuilder.createItem1(Material., amount, data, name, lore))
-        
+
         if (target.getInventory().getItem(0) != null) {
             this.s(45, ItemBuilder.createArmor(target.getInventory().getItem(0)));
         }

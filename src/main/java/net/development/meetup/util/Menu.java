@@ -1,5 +1,6 @@
 package net.development.meetup.util;
 
+import net.development.meetup.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -12,17 +13,15 @@ import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
-import net.development.meetup.Main;
-
 
 public abstract class Menu implements Listener {
-	
-	String s = null;
+
+    String s = null;
     public Inventory _inv;
 
     public Menu(String name, int rows) {
-        this._inv = Bukkit.createInventory((InventoryHolder)null, (int)(9 * rows), (String)ChatColor.translateAlternateColorCodes((char)'&', (String)name));
-        Main.get().getServer().getPluginManager().registerEvents((Listener)this, (Plugin)Main.get());
+        this._inv = Bukkit.createInventory((InventoryHolder) null, (int) (9 * rows), (String) ChatColor.translateAlternateColorCodes((char) '&', (String) name));
+        Main.get().getServer().getPluginManager().registerEvents((Listener) this, (Plugin) Main.get());
         this.s = name;
     }
 
@@ -33,11 +32,11 @@ public abstract class Menu implements Listener {
     public void s(int i, ItemStack stack) {
         this._inv.setItem(i, stack);
     }
-    
+
     public void s(ItemStack[] stack) {
         this._inv.addItem(stack);
     }
-    
+
     public Inventory i() {
         return this._inv;
     }
@@ -52,18 +51,18 @@ public abstract class Menu implements Listener {
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent e) {
-    		
-    	if (e.getInventory().equals((Object)this.i()) && e.getCurrentItem() != null && i().contains(e.getCurrentItem()) && e.getWhoClicked() instanceof Player) {
-            onClick((Player)e.getWhoClicked(), e.getCurrentItem(), e.getInventory().getContents());
+
+        if (e.getInventory().equals((Object) this.i()) && e.getCurrentItem() != null && i().contains(e.getCurrentItem()) && e.getWhoClicked() instanceof Player) {
+            onClick((Player) e.getWhoClicked(), e.getCurrentItem(), e.getInventory().getContents());
             e.setCancelled(true);
         }
-  
+
     }
 
     @EventHandler
     public void onInventoryClose(InventoryCloseEvent event) {
-        if (event.getInventory().equals((Object)this.i()) && event.getPlayer() instanceof Player) {
-            this.onClose((Player)event.getPlayer(), event.getInventory().getContents());
+        if (event.getInventory().equals((Object) this.i()) && event.getPlayer() instanceof Player) {
+            this.onClose((Player) event.getPlayer(), event.getInventory().getContents());
         }
     }
 

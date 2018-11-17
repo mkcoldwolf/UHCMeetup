@@ -6,23 +6,23 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
 enum VisualType {
-	UHC_BORDER {
-		@Override
-		BlockFiller blockFiller() {
-			final BlockFiller blockFiller = new BlockFiller() {
+    UHC_BORDER {
+        @Override
+        BlockFiller blockFiller() {
+            final BlockFiller blockFiller = new BlockFiller() {
 
-				@SuppressWarnings("deprecation")
-				@Override
-				VisualBlockData generate(Player paramPlayer, Location paramLocation) {
-					return new VisualBlockData(Material.STAINED_GLASS, DyeColor.ORANGE.getData());
-				}
-			};
-			return blockFiller;
-		}
-	};
+                @SuppressWarnings("deprecation")
+                @Override
+                VisualBlockData generate(Player paramPlayer, Location paramLocation) {
+                    return new VisualBlockData(Material.STAINED_GLASS, DyeColor.ORANGE.getData());
+                }
+            };
+            return blockFiller;
+        }
+    };
 
-	private VisualType() {
-	}
+    private VisualType() {
+    }
 
-	abstract BlockFiller blockFiller();
+    abstract BlockFiller blockFiller();
 }
