@@ -2,6 +2,7 @@ main: net.development.meetup.Main
 name: Mmeetup
 version: 1.0
 author: LeeGod
+depend: [Mitw]
 commands:
   vote:
   team:

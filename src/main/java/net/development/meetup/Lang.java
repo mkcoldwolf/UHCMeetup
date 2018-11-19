@@ -70,15 +70,26 @@ public class Lang {
 	public String zh_tw_airDropCountDown = "§7[§6Air§fDrop§7]§f 空投將在 §e<time>秒 §f後墜落於 §6x: <x> y: <y> z: <z> §f!";
 	public String zh_tw_airDrop = "§7[§6Air§fDrop§7]§f 空投墜落在了 §6x: <x> y: <y> z: <z> §f!";
 	public String zh_tw_bowLess = "§c§lBowLess 是開啟的! 你不能使用弓!";
-	public String zh_tw_noClean = "&f無敵時間: &6<cleanTime>";
+	public String zh_tw_noClean = "&f無敵時間: &6<cleanTime>秒";
 	public String zh_tw_choose = "&6&l你選擇了 &e&l中文 &6&l!";
 	public String zh_tw_cleandb_on = "&7- &6防止撿頭模式 &a&l開啟";
 	public String zh_tw_cleandb_off = "&7- &6防止撿頭模式 &c&l關閉";
+	public String zh_tw_win = "&e0 &b贏了這場遊戲!";
+	public String zh_tw_win_team = "&b隊伍 &e0 &b贏了這場遊戲!";
+	public String zh_tw_team_members = "&f隊伍成員:&b 0";
 	public String zh_tw_bow = "&c<player> 有 <health>";
 	public String zh_tw_s1 = "秒";
 	public String zh_tw_s2 = "秒";
 	public String zh_tw_m1 = "分鐘";
 	public String zh_tw_m2 = "分鐘";
+	public String zh_tw_spec1 = "§6§l隨機傳送";
+	public String zh_tw_spec2 = "§b§l回到大廳";
+	public String zh_tw_vote = "§a§lScenarios投票";
+	public String zh_tw_reTurnToPractice = "§6§l回到戰鬥練習";
+	public String zh_tw_teamchoose = "&6隊伍&f選擇";
+	public String zh_tw_dbmodeon = "&fCleanup紀錄模式 &f- &aON";
+	public String zh_tw_dbmodeoff = "&fCleanup紀錄模式 &f- &cOFF";
+
 	public List<String> zh_tw_LobbyList = Arrays.asList(
 			"&7&m---------------------------",
 			"&f人數: &6<players>",
@@ -162,17 +173,27 @@ public class Lang {
 	public String en_us_airDropCountDown = "§7[§6Air§fDrop§7]§f the airdrop will be dropping after §e<time> seconds §fto §6x: <x> y: <y> z: <z> §f!";
 	public String en_us_airDrop = "§7[§6Air§fDrop§7]§f the airdrop has been dropped to §6x: <x> y: <y> z: <z> §f!";
 	public String en_us_bowLess = "§c§lBowLess is on! you're not allowed to use the bow!";
-	public String en_us_noClean = "&fNoClean: &6<cleanTime>";
+	public String en_us_noClean = "&fNoclean: &6<cleanTime>s";
 	public String en_us_choose = "&6&lYou chose &e&lEnglish &6&l!";
 	public String en_us_bow = "&c<player> has <health>";
 	public String en_us_death = "&c{0}&8[&f{1}&8] &7died!";
 	public String en_us_death_by_player = "&c{0}&8[&f{1}&8] &7was slain by &c{2}&8[&f{3}&8] &7!";
 	public String en_us_cleandb_on = "&7- &6Cleanup debug mode &a&lON";
 	public String en_us_cleandb_off = "&7- &6Cleanup debug mode &c&lOFF";
+	public String en_us_win = "&e0 &bwin the game!";
+	public String en_us_win_team = "&bTeam &e0 &bwin the game!";
+	public String en_us_team_members = "&fTeam members:&b 0";
 	public String en_us_s1 = "second";
 	public String en_us_s2 = "seconds";
 	public String en_us_m1 = "minute";
 	public String en_us_m2 = "minutes";
+	public String en_us_spec1 = "§6§lRandom Teleport";
+	public String en_us_spec2 = "§b§lBack to hub";
+	public String en_us_vote = "§a§lScenarios vote";
+	public String en_us_reTurnToPractice = "§6§lBack to practice";
+	public String en_us_teamchoose = "&6Choose &fTeams";
+	public String en_us_dbmodeon = "&fCleanup debug mode &f- &aON";
+	public String en_us_dbmodeoff = "&fCleanup debug mode &f- &cOFF";
 	public List<String> en_us_LobbyList = Arrays.asList(
 			"&7&m---------------------------",
 			"&fPlayers: &6<players>",

@@ -44,7 +44,6 @@ import org.bukkit.scheduler.BukkitRunnable;
 import net.development.meetup.Lang;
 import net.development.meetup.Main;
 import net.development.meetup.enums.Status;
-import net.development.meetup.manager.KitManager;
 import net.development.meetup.manager.PlayerManager;
 import net.development.meetup.scenarios.ScenariosEnable;
 import net.development.meetup.util.SpecInv;
@@ -89,22 +88,31 @@ public class GameListener implements Listener {
 
 	@EventHandler
 	public void onClick(final PlayerInteractEvent e) {
+
 		if (!e.getAction().equals(Action.LEFT_CLICK_AIR) &&
 				!e.getAction().equals(Action.LEFT_CLICK_BLOCK) &&
 				!e.getAction().equals(Action.RIGHT_CLICK_AIR) &&
 				!e.getAction().equals(Action.RIGHT_CLICK_BLOCK))
 			return;
+
 		if (Status.isState(Status.TELEPORT))
 			return;
+
 		if (Main.getGM().spectators.contains(e.getPlayer().getUniqueId()) || !Status.isState(Status.PVP)) {
 			e.setCancelled(true);
-		}
+		} else
+			return;
+
 		if (e.getItem() == null || e.getItem().getType().equals(Material.AIR))
 			return;
 		final Player p = e.getPlayer();
-		if (e.getItem().equals(KitManager.vote)) {
+
+		if (e.getItem().getType() == Material.PAINTING) {
+
 			p.performCommand("mmeetup:vote");
-		} else if (e.getItem().equals(KitManager.spec1)) {
+
+		} else if (e.getItem().getType() == Material.SLIME_BALL) {
+
 			if (!Main.getGM().spectators.contains(p.getUniqueId())) {
 				p.getInventory().remove(e.getItem());
 				return;
@@ -120,7 +128,8 @@ public class GameListener implements Listener {
 			final Player target = players.get(rand.nextInt(players.size()));
 			p.teleport(target);
 			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.get(), () -> using.remove(p.getUniqueId()), 60l);
-		} else if (e.getItem().equals(KitManager.spec2)) {
+
+		} else if (e.getItem().getType() == Material.BED) {
 			Main.getGM().sendToServer(p);
 			if (using.contains(p.getUniqueId())) {
 				p.sendMessage("§c冷卻中...");
@@ -128,7 +137,7 @@ public class GameListener implements Listener {
 			}
 			using.add(p.getUniqueId());
 			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.get(), () -> using.remove(p.getUniqueId()), 60l);
-		} else if (e.getItem().equals(KitManager.team)) {
+		} else if (e.getItem().getType() == Material.GOLD_SWORD) {
 			p.performCommand("team");
 			if (using.contains(p.getUniqueId())) {
 				p.sendMessage("§c冷卻中...");
@@ -136,7 +145,7 @@ public class GameListener implements Listener {
 			}
 			using.add(p.getUniqueId());
 			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.get(), () -> using.remove(p.getUniqueId()), 60l);
-		} else if (e.getItem().equals(KitManager.retunToArenaPvP)) {
+		} else if (e.getItem().getType() == Material.DIAMOND_SWORD) {
 			Main.getGM().sendToPractice(p);
 			if (using.contains(p.getUniqueId())) {
 				p.sendMessage("§c冷卻中...");
@@ -144,7 +153,7 @@ public class GameListener implements Listener {
 			}
 			using.add(p.getUniqueId());
 			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.get(), () -> using.remove(p.getUniqueId()), 60l);
-		} else if (e.getItem().equals(KitManager.DbOn) || e.getItem().equals(KitManager.DbOff)) {
+		} else if (e.getItem().getType() == Material.INK_SACK) {
 
 			if (using.contains(p.getUniqueId())) {
 				p.sendMessage("§c冷卻中...");

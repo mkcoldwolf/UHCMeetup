@@ -18,15 +18,7 @@ import net.development.meetup.scenarios.ScenariosEnable;
 import net.development.meetup.util.ItemBuilder;
 
 public class KitManager {
-	public static ItemStack vote = ItemBuilder.createItem1(Material.PAINTING, 1, 0, Lang.vote, "&7點我進行投票!");
-	public static ItemStack spec1 = ItemBuilder.createItem1(Material.SLIME_BALL, 1, 0, Lang.spec1, "&7點我隨機傳送到一個玩家身邊!");
-	public static ItemStack spec2 = ItemBuilder.createItem1(Material.BED, 1, 0, Lang.spec2,
-			"&7點我回到大廳!&7(Return to Hub)");
-	public static ItemStack retunToArenaPvP = ItemBuilder.createItem1(Material.DIAMOND_SWORD, 1, 0,
-			Lang.reTurnToPractice, "&6回到對戰分流&7(Return to Practice)");
-	public static ItemStack team = ItemBuilder.createItem1(Material.GOLD_SWORD, 1, 0, "&6隊伍&f選擇", "&7點我選擇隊伍!");
-	public static ItemStack DbOff = ItemBuilder.createItem1(Material.INK_SACK, 1, 8, "&fCleanup紀錄模式&7(DebugMode) &f- &cOFF");
-	public static ItemStack DbOn = ItemBuilder.createItem1(Material.INK_SACK, 1, 10, "&fCleanup紀錄模式&7(DebugMode) &f- &aON");
+
 	public static ArrayList<Material> diamondArmors = new ArrayList<>();
 	public static ArrayList<Material> sword = new ArrayList<>();
 	private final HashMap<UUID, Integer> swordlevel = new HashMap<>();

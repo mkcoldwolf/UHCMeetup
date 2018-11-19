@@ -1,6 +1,7 @@
 package net.development.meetup.impl;
 
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 import org.bukkit.entity.Player;
 
@@ -11,7 +12,7 @@ import net.development.mitw.utils.timer.PlayerTimer;
 public class NocleanTimer extends PlayerTimer {
 
 	public NocleanTimer() {
-		super("Noclean", 400L, true);
+		super("Noclean", TimeUnit.SECONDS.toMillis(20L), true);
 	}
 
 	@Override

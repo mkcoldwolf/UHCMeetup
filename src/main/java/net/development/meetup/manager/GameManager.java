@@ -8,6 +8,7 @@ import java.util.UUID;
 
 import org.bukkit.GameMode;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -19,6 +20,7 @@ import net.development.meetup.Main;
 import net.development.meetup.border.Config;
 import net.development.meetup.player.UHCPlayer;
 import net.development.meetup.task.LobbyTask;
+import net.development.mitw.utils.ItemBuilder;
 
 public class GameManager {
 
@@ -70,13 +72,14 @@ public class GameManager {
 		new BukkitRunnable() {
 			@Override
 			public void run() {
-				p.getInventory().setItem(0, KitManager.vote);
+				p.getInventory().setItem(0, new ItemBuilder(Material.PAINTING).name(Main.get().getLang().translate(p, "vote")).build());
 				p.getInventory().setItem(7,
-						(debugModePlayers.containsKey(p.getUniqueId()) && debugModePlayers.get(p.getUniqueId()) == true) ? KitManager.DbOn
-								: KitManager.DbOff);
-				p.getInventory().setItem(8, KitManager.spec2);
+						(debugModePlayers.containsKey(p.getUniqueId()) && debugModePlayers.get(p.getUniqueId()) == true) ?
+								new ItemBuilder(Material.INK_SACK).durability(10).name(Main.get().getLang().translate(p, "dbmodeon")).build()
+								: new ItemBuilder(Material.INK_SACK).durability(8).name(Main.get().getLang().translate(p, "dbmodeoff")).build());
+				p.getInventory().setItem(8, new ItemBuilder(Material.BED).name(Main.get().getLang().translate(p, "spec2")).build());
 				if (Main.TeamMode) {
-					p.getInventory().setItem(1, KitManager.team);
+					p.getInventory().setItem(1, new ItemBuilder(Material.GOLD_SWORD).name(Main.get().getLang().translate(p, "teamchoose")).build());
 				}
 				p.updateInventory();
 			}

@@ -8,8 +8,8 @@ import net.development.meetup.Main;
 import net.development.meetup.player.UHCTeam;
 import net.development.meetup.task.FireworkTask;
 import net.development.meetup.util.PlaySound;
+import net.development.mitw.utils.RV;
 import net.development.mitw.uuid.UUIDCache;
-import net.md_5.bungee.api.ChatColor;
 
 public class checkWin {
 
@@ -28,14 +28,16 @@ public class checkWin {
 					new FireworkTask(player2).runTaskTimer(Main.get(), 10L, 20L);
 				}
 				PlaySound.PlaySoundAll(Sound.WITHER_DEATH);
-				Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', "&e&l隊伍" + (win.id + 1) + " &b贏了這場遊戲!!"));
-				Bukkit.broadcastMessage("§f隊伍成員: §6" + (win.p1 != null ? UUIDCache.getName(win.p1) : "") + (win.p2 != null ? win.p1 != null ? ", " + UUIDCache.getName(win.p2) : UUIDCache.getName(win.p2) : ""));
+
+				Main.get().getLang().send("win_team", RV.o("0", (win.id + 1) + ""));
+				Main.get().getLang().send("team_members", RV.o("0", (win.p1 != null ? UUIDCache.getName(win.p1) : "") + (win.p2 != null ? win.p1 != null ? ", " + UUIDCache.getName(win.p2) : UUIDCache.getName(win.p2) : "")));
+
 				Bukkit.getScheduler().runTaskLater(Main.get(), () -> {
 					for (final Player p : Bukkit.getOnlinePlayers()) {
 						Main.getGM().sendToServer(p);
 					}
 					Bukkit.getScheduler().runTaskLater(Main.get(), () -> Bukkit.shutdown(), 20);
-				}, 300);
+				}, 300L);
 			}
 			return;
 		}
@@ -43,7 +45,9 @@ public class checkWin {
 			final Player winner = Bukkit.getPlayer(Main.getGM().players.get(0));
 			new FireworkTask(winner).runTaskTimer(Main.get(), 10L, 20L);
 			PlaySound.PlaySoundAll(Sound.WITHER_DEATH);
-			Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', "&e&l" + winner.getName() + " &b贏了這場遊戲!!"));
+
+			Main.get().getLang().send("win", RV.o("0", winner.getName()));
+
 			Bukkit.getScheduler().runTaskLater(Main.get(), () -> {
 				for (final Player p : Bukkit.getOnlinePlayers()) {
 					Main.getGM().sendToServer(p);
