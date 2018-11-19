@@ -13,7 +13,7 @@
             <artifactId>nspigot</artifactId>
             <version>1.8.8-R0.1-SNAPSHOT</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/libs/ySpigot2.jar</systemPath>
+            <systemPath>${project.basedir}/libs/nspigot-2.0E.jar</systemPath>
         </dependency>
 
         <dependency>
@@ -23,6 +23,13 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/libs/Command4Bungee.jar</systemPath>
         </dependency>
+        
+        <dependency>
+			<groupId>net.development.mitw</groupId>
+			<artifactId>mitw</artifactId>
+			<version>1.0.0</version>
+			<scope>provided</scope>
+		</dependency>
 
     </dependencies>
 

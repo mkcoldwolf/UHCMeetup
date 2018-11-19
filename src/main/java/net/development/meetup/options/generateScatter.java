@@ -1,7 +1,8 @@
 package net.development.meetup.options;
 
 import net.development.meetup.Main;
-import net.development.meetup.UHCTeam;
+import net.development.meetup.player.UHCTeam;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;

@@ -21,15 +21,16 @@ public class Lang {
 		dataConfig = YamlConfiguration.loadConfiguration(data);
 	}
 
-	public static File completeCreateFiles(File file, String name) {
+	public static File completeCreateFiles(File file, final String name) {
 		file = new File(Main.get().getDataFolder(), name);
-		if (!file.exists())
+		if (!file.exists()) {
 			try {
 				file.createNewFile();
 				Main.get().saveResource(name, true);
 			} catch (final IOException e) {
 				e.printStackTrace();
 			}
+		}
 
 		return file;
 	}
@@ -52,6 +53,8 @@ public class Lang {
 			, " "
 			, "&7&m------------------");
 
+	public String zh_tw_death = "&c{0}&8[&f{1}&8] &7死亡了!";
+	public String zh_tw_death_by_player = "&c{0}&8[&f{1}&8] &7被 &c{2}&8[&f{3}&8] &7擊殺了!";
 	public String zh_tw_CASTJOIN = " &6<player> &f加入了 §6Mitw§eMeetup &7(<current>/&c<max>&7)";
 	public String zh_tw_CASTQUIT = " &c<player> &f退出了 §6Mitw§eMeetup &7(<current>/&c<max>&7)";
 	public String zh_tw_NOPERM;
@@ -71,7 +74,6 @@ public class Lang {
 	public String zh_tw_choose = "&6&l你選擇了 &e&l中文 &6&l!";
 	public String zh_tw_cleandb_on = "&7- &6防止撿頭模式 &a&l開啟";
 	public String zh_tw_cleandb_off = "&7- &6防止撿頭模式 &c&l關閉";
-	public String zh_tw_death = "§c<player> §";
 	public String zh_tw_bow = "&c<player> 有 <health>";
 	public String zh_tw_s1 = "秒";
 	public String zh_tw_s2 = "秒";
@@ -163,6 +165,8 @@ public class Lang {
 	public String en_us_noClean = "&fNoClean: &6<cleanTime>";
 	public String en_us_choose = "&6&lYou chose &e&lEnglish &6&l!";
 	public String en_us_bow = "&c<player> has <health>";
+	public String en_us_death = "&c{0}&8[&f{1}&8] &7died!";
+	public String en_us_death_by_player = "&c{0}&8[&f{1}&8] &7was slain by &c{2}&8[&f{3}&8] &7!";
 	public String en_us_cleandb_on = "&7- &6Cleanup debug mode &a&lON";
 	public String en_us_cleandb_off = "&7- &6Cleanup debug mode &c&lOFF";
 	public String en_us_s1 = "second";

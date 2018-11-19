@@ -1,13 +1,13 @@
 package net.development.meetup.manager;
 
 import net.development.meetup.Main;
-import net.development.meetup.UHCTeam;
 import net.development.meetup.board.BoardSetup;
 import net.development.meetup.border.Config;
 import net.development.meetup.border.CoordXZ;
 import net.development.meetup.border.WorldFillTask;
 import net.development.meetup.enums.Status;
 import net.development.meetup.options.generateScatter;
+import net.development.meetup.player.UHCTeam;
 import net.development.meetup.util.Border;
 import net.development.meetup.util.Sit;
 import net.md_5.bungee.api.ChatColor;
