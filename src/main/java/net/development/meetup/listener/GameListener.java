@@ -45,6 +45,7 @@ import net.development.meetup.Lang;
 import net.development.meetup.Main;
 import net.development.meetup.enums.Status;
 import net.development.meetup.manager.PlayerManager;
+import net.development.meetup.player.UHCPlayer;
 import net.development.meetup.scenarios.ScenariosEnable;
 import net.development.meetup.util.SpecInv;
 import net.md_5.bungee.api.ChatColor;
@@ -118,7 +119,7 @@ public class GameListener implements Listener {
 				return;
 			}
 			if (using.contains(p.getUniqueId())) {
-				p.sendMessage("§c冷卻中...");
+				p.sendMessage(Main.get().getLang().translate(p, "wait"));
 				return;
 			}
 			using.add(p.getUniqueId());
@@ -132,7 +133,7 @@ public class GameListener implements Listener {
 		} else if (e.getItem().getType() == Material.BED) {
 			Main.getGM().sendToServer(p);
 			if (using.contains(p.getUniqueId())) {
-				p.sendMessage("§c冷卻中...");
+				p.sendMessage(Main.get().getLang().translate(p, "wait"));
 				return;
 			}
 			using.add(p.getUniqueId());
@@ -140,7 +141,7 @@ public class GameListener implements Listener {
 		} else if (e.getItem().getType() == Material.GOLD_SWORD) {
 			p.performCommand("team");
 			if (using.contains(p.getUniqueId())) {
-				p.sendMessage("§c冷卻中...");
+				p.sendMessage(Main.get().getLang().translate(p, "wait"));
 				return;
 			}
 			using.add(p.getUniqueId());
@@ -148,7 +149,7 @@ public class GameListener implements Listener {
 		} else if (e.getItem().getType() == Material.DIAMOND_SWORD) {
 			Main.getGM().sendToPractice(p);
 			if (using.contains(p.getUniqueId())) {
-				p.sendMessage("§c冷卻中...");
+				p.sendMessage(Main.get().getLang().translate(p, "wait"));
 				return;
 			}
 			using.add(p.getUniqueId());
@@ -156,7 +157,7 @@ public class GameListener implements Listener {
 		} else if (e.getItem().getType() == Material.INK_SACK) {
 
 			if (using.contains(p.getUniqueId())) {
-				p.sendMessage("§c冷卻中...");
+				p.sendMessage(Main.get().getLang().translate(p, "wait"));
 				return;
 			}
 			using.add(p.getUniqueId());
@@ -282,6 +283,14 @@ public class GameListener implements Listener {
 			if (Main.getGM().spectators.contains(k.getUniqueId())) {
 				e.setCancelled(true);
 				return;
+			}
+			if (Main.TeamMode) {
+				final UHCPlayer up = Main.getGM().getData.get(p.getUniqueId());
+				final UHCPlayer kp = Main.getGM().getData.get(k.getUniqueId());
+				if (up.getTeam() != null && kp.getTeam() != null && up.getTeam().equals(kp.getTeam())) {
+					e.setCancelled(true);
+					return;
+				}
 			}
 			if (Main.getGM().getData.get(k.getUniqueId()).isNoClean()) {
 				Main.getGM().getData.get(k.getUniqueId()).setNoClean(false);

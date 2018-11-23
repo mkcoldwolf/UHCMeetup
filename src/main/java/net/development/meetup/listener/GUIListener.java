@@ -30,9 +30,9 @@ public class GUIListener implements Listener {
 			if (up.isInTeam()) {
 				final UHCTeam teamBefore = up.getTeam();
 				if (teamBefore != null) {
-					if (teamBefore.p1.equals(p.getUniqueId())) {
+					if (teamBefore.p1 != null && teamBefore.p1.equals(p.getUniqueId())) {
 						teamBefore.p1 = null;
-					} else if (teamBefore.p2.equals(p.getUniqueId())) {
+					} else if (teamBefore.p2 != null && teamBefore.p2.equals(p.getUniqueId())) {
 						teamBefore.p2 = null;
 					}
 					TeamGUI.getInstance().updateGUI(teamBefore.id);

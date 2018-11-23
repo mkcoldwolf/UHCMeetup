@@ -2,6 +2,7 @@ package net.development.meetup.board;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
@@ -16,7 +17,8 @@ import org.bukkit.scoreboard.Team;
 
 import net.development.meetup.Main;
 import net.development.meetup.enums.Status;
-import net.development.meetup.player.UHCPlayer;
+import net.development.meetup.options.TeamGUI;
+import net.development.meetup.player.UHCTeam;
 import net.development.mitw.uuid.UUIDCache;
 
 /**
@@ -91,23 +93,67 @@ public class ScoreHelper {
 	}
 
 	public void setColoredTag() {
-		final UHCPlayer up = Main.getGM().getData.get(uuid);
-		Team st = scoreboard.getTeam("team");
-		if (st == null) {
-			st = scoreboard.registerNewTeam("team");
+
+		boolean spectating = false;
+
+		if (Main.getGM().spectators.contains(uuid)) {
+			final Team spectateTeam = scoreboard.registerNewTeam("9spectate");
+			spectateTeam.setPrefix("§8");
+			spectateTeam.addEntry(UUIDCache.getName(uuid));
+			spectating = true;
 		}
-		st.setPrefix("§a");
-		st.setAllowFriendlyFire(false);
-		if (up.isInTeam()) {
-			if (up.getTeam().p1 != null) {
-				st.addEntry(UUIDCache.getName(up.getTeam().p1));
-			}
-			if (up.getTeam().p2 != null) {
-				st.addEntry(UUIDCache.getName(up.getTeam().p2));
+
+		if (Main.TeamMode) {
+			final UHCTeam uTeam = Main.getGM().getData.get(uuid).getTeam();
+
+			final Map<Integer, Team> teams = new HashMap<>();
+
+			for (final UHCTeam team : TeamGUI.getInstance().teams) {
+				Team t;
+				if (!teams.containsKey(team.id)) {
+					final String teamName = uTeam != null ? team.id == uTeam.id ? "1team" + team.id : "team" + team.id : "team" + team.id;
+					t = scoreboard.getTeam(teamName);
+					if (t == null) {
+						t = scoreboard.registerNewTeam(teamName);
+					}
+					t.setPrefix((uTeam != null ? (uTeam.id == team.id ? "§a" : "§c") : "§c") + "[" + (team.id + 1) + "]");
+					teams.put(team.id, t);
+				} else {
+					t = teams.get(team.id);
+				}
+				if (team.p1 != null && !(spectating && team.p1 == uuid)) {
+					t.addEntry(UUIDCache.getName(team.p1));
+				}
+				if (team.p2 != null && !(spectating && team.p2 == uuid)) {
+					t.addEntry(UUIDCache.getName(team.p2));
+				}
 			}
 		} else {
-			st.addEntry(UUIDCache.getName(uuid));
+
+			if (!spectating) {
+
+				final Team team1 = scoreboard.registerNewTeam("1team");
+				team1.setPrefix(ChatColor.GREEN.toString());
+				team1.addEntry(UUIDCache.getName(uuid));
+
+			}
+
+			final Team team2 = scoreboard.registerNewTeam("2team");
+			team2.setPrefix(ChatColor.RED.toString());
+
+			for (final Player player : Bukkit.getOnlinePlayers()) {
+
+				if (player.getUniqueId() != uuid) {
+
+					team2.addEntry(player.getName());
+
+				}
+
+			}
+
 		}
+
+
 	}
 
 	public void setSlot(final int slot, String text) {

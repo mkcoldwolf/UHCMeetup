@@ -17,8 +17,8 @@ public class UHCTeam {
 	public int kills;
 
 	public UHCTeam(final Player p1, final Player p2, final int id) {
-		this.p1 = p1.getUniqueId();
-		this.p2 = p2.getUniqueId();
+		this.p1 = p1 == null ? null : p1.getUniqueId();
+		this.p2 = p2 == null ? null : p2.getUniqueId();
 		this.id = id;
 	}
 

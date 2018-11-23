@@ -4,20 +4,21 @@ import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 public class DebugTask extends BukkitRunnable {
-    public DebugTask(Player p) {
-        this.p = p;
-    }
 
-    int run = 0;
-    Player p;
+	public DebugTask(final Player p) {
+		this.p = p;
+	}
 
-    @Override
-    public void run() {
-        if (run >= 10 || p == null) {
-            this.cancel();
-            return;
-        }
-        p.sendMessage(String.valueOf(run));
-        run++;
-    }
+	private int run = 0;
+	private final Player p;
+
+	@Override
+	public void run() {
+		if (run >= 10 || p == null) {
+			this.cancel();
+			return;
+		}
+		p.sendMessage(String.valueOf(run));
+		run++;
+	}
 }

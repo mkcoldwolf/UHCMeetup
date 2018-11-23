@@ -24,8 +24,12 @@ public class JoinListener implements Listener {
 	@EventHandler
 	public void onPlayerJoin(final PlayerJoinEvent e) {
 		final Player p = e.getPlayer();
+
+		e.setJoinMessage(null);
+
 		final UHCPlayer uHCPlayer = new UHCPlayer(p);
 		Main.getGM().getData.put(p.getUniqueId(), uHCPlayer);
+
 		switch (Status.getState()) {
 		case LOADING:
 			break;
@@ -39,11 +43,10 @@ public class JoinListener implements Listener {
 			PlayerManager.setPlayerSolo(p);
 			Main.getGM().checkStart();
 			for (final Player pl : Bukkit.getOnlinePlayers()) {
-				pl.sendMessage(Lang.PREFIX + Main.get().getLang().translate(pl, "CASTJOIN").replaceAll("&", "§")
+				pl.sendMessage(Lang.PREFIX + Main.get().getLang().translate(pl, "CASTJOIN")
 						.replaceAll("<current>", String.valueOf(Main.getGM().players.size())).replaceAll("<player>", p.getDisplayName())
 						.replaceAll("<max>", Main.get().getConfig().getString("Max-Player")));
 			}
-			e.setJoinMessage(null);
 			for (int i = 0; i < 30; i++) {
 				p.sendMessage(" ");
 			}
@@ -55,18 +58,18 @@ public class JoinListener implements Listener {
 				new SMenu(p).o(p);
 				if (!Main.getGM().isBroadcasted()) {
 					Main.getGM().openBroadcast();
-					Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "bungee broadcast meetup");
+					Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "bungee broadcast meetup-" + Main.server + " " + Main.TeamMode);
 				}
 			}, 5);
 			break;
 		case TELEPORT:
 			break;
 		case PVP:
-			PlayerManager.setPlayerSpec(p);
+			PlayerManager.setPlayerSpec(p, false);
 			p.teleport(ArenaManager.center);
 			break;
 		case FINISH:
-			PlayerManager.setPlayerSpec(p);
+			PlayerManager.setPlayerSpec(p, false);
 			p.teleport(ArenaManager.center);
 			break;
 		}

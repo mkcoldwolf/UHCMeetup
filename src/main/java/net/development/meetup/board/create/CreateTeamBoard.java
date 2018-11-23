@@ -56,7 +56,7 @@ public class CreateTeamBoard extends BukkitRunnable {
 
 	public static String placeholder(final Player p, String s) {
 		final UHCPlayer up = Main.getGM().getData.get(p.getUniqueId());
-		String untiShrink = "&7(&c" + Tools.UntiShrinkTime(PVPBorderTask.sec) + "&7)";
+		String untiShrink = "&7|&c " + Tools.UntiShrinkTime(PVPBorderTask.sec);
 		if (PVPBorderTask.list.isEmpty()) {
 			untiShrink = "";
 		}

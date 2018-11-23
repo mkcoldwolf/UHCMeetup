@@ -44,7 +44,7 @@ public class DeathListener implements Listener {
 		executeDeathEvent(e);
 		Main.getGM().getData.get(p.getUniqueId()).setAlive(false);
 
-		PlayerManager.setPlayerSpec(p);
+		PlayerManager.setPlayerSpec(p, true);
 		((CraftPlayer)p).getHandle().setFakingDeath(true);
 
 		final Player killer = p.getKiller();
@@ -74,7 +74,7 @@ public class DeathListener implements Listener {
 		if (Main.TeamMode) {
 			killerProfile.getTeam().kills++;
 		}
-		Main.get().getLang().send("death", RV.o("{0}", p.getName()), RV.o("{1}", profile.getKills() + ""), RV.o("{2}", killer.getName()), RV.o("{3}", killerProfile.getKills() + ""));
+		Main.get().getLang().send("death_by_player", RV.o("{0}", p.getName()), RV.o("{1}", profile.getKills() + ""), RV.o("{2}", killer.getName()), RV.o("{3}", killerProfile.getKills() + ""));
 
 	}
 
@@ -118,6 +118,14 @@ public class DeathListener implements Listener {
 					--it;
 				}
 			}.runTaskTimer(Main.get(), 20, 20);
+
+		} else {
+
+			for (final ItemStack itemStack : e.getDrops()) {
+				e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), itemStack);
+			}
+
+			e.getDrops().clear();
 
 		}
 		if (ScenariosEnable.NoCleanE) {

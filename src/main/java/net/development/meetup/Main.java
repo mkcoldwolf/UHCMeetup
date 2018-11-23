@@ -41,6 +41,8 @@ public class Main extends JavaPlugin {
 	private static KitManager km;
 	public static List<Material> canbreak = new ArrayList<>();
 	public static boolean TeamMode;
+	public static String serverName;
+	public static int server;
 	private final PluginManager pm = Bukkit.getPluginManager();
 
 	@Override
@@ -49,7 +51,8 @@ public class Main extends JavaPlugin {
 		ins = this;
 
 		TeamMode = getConfig().getBoolean("Team");
-
+		serverName = getConfig().getString("ServerName");
+		server = getConfig().getInt("Server");
 		this.RegisterListener();
 		this.RegisterManager();
 		this.loadConfig();

@@ -21,10 +21,24 @@ public class PlayerManager {
 		Main.getGM().players.add(p.getUniqueId());
 	}
 
-	public static void setPlayerSpec(final Player p) {
+	public static void setPlayerSpec(final Player p, final boolean lateHide) {
 
-		Bukkit.getScheduler().runTaskLater(Main.get(), () -> {
+		Main.getGM().spectators.add(p.getUniqueId());
 
+		if (lateHide) {
+			Bukkit.getScheduler().runTaskLater(Main.get(), () -> {
+
+				for (final Player p1 : Bukkit.getOnlinePlayers()) {
+					if (p1 != null && p1 != p) {
+						p1.hidePlayer(p);
+						if (Main.getGM().spectators.contains(p1.getUniqueId())) {
+							p.hidePlayer(p1);
+						}
+					}
+				}
+
+			}, 20L);
+		} else {
 			for (final Player p1 : Bukkit.getOnlinePlayers()) {
 				if (p1 != null && p1 != p) {
 					p1.hidePlayer(p);
@@ -33,8 +47,7 @@ public class PlayerManager {
 					}
 				}
 			}
-
-		}, 20L);
+		}
 
 		p.setGameMode(GameMode.CREATIVE);
 		new BukkitRunnable() {
@@ -48,7 +61,6 @@ public class PlayerManager {
 				p.updateInventory();
 			}
 		}.runTaskLater(Main.get(), 5L);
-		Main.getGM().spectators.add(p.getUniqueId());
 	}
 
 	public static void setPlayerDBMode(final Player p) {
@@ -56,11 +68,11 @@ public class PlayerManager {
 		if (Main.getGM().debugModePlayers.containsKey(u) && Main.getGM().debugModePlayers.get(u) == true) {
 			Main.getGM().debugModePlayers.put(u, false);
 			p.sendMessage(Tools.colored(Lang.PREFIX + Main.get().getLang().translate(p, "cleandb_off")));
-			p.getInventory().setItem(7, new ItemBuilder(Material.INK_SACK).data(8).name(Main.get().getLang().translate(p, "dbmodeoff")).build());
+			p.getInventory().setItem(7, new ItemBuilder(Material.INK_SACK).durability(8).name(Main.get().getLang().translate(p, "dbmodeoff")).build());
 		} else {
 			Main.getGM().debugModePlayers.put(u, true);
 			p.sendMessage(Tools.colored(Lang.PREFIX + Main.get().getLang().translate(p, "cleandb_on")));
-			p.getInventory().setItem(7, new ItemBuilder(Material.INK_SACK).data(10).name(Main.get().getLang().translate(p, "dbmodeon")).build());
+			p.getInventory().setItem(7, new ItemBuilder(Material.INK_SACK).durability(10).name(Main.get().getLang().translate(p, "dbmodeon")).build());
 		}
 	}
 

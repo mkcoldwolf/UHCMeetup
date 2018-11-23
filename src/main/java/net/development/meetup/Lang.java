@@ -89,10 +89,12 @@ public class Lang {
 	public String zh_tw_teamchoose = "&6隊伍&f選擇";
 	public String zh_tw_dbmodeon = "&fCleanup紀錄模式 &f- &aON";
 	public String zh_tw_dbmodeoff = "&fCleanup紀錄模式 &f- &cOFF";
+	public String zh_tw_wait = "&c冷卻中...";
 
 	public List<String> zh_tw_LobbyList = Arrays.asList(
 			"&7&m---------------------------",
 			"&f人數: &6<players>",
+			"&f伺服器: &e<server>",
 			"&f投票將在 &6<starting>&f 中止!",
 			" ",
 			"&fTimebomb:&6 <s1>票",
@@ -194,9 +196,12 @@ public class Lang {
 	public String en_us_teamchoose = "&6Choose &fTeams";
 	public String en_us_dbmodeon = "&fCleanup debug mode &f- &aON";
 	public String en_us_dbmodeoff = "&fCleanup debug mode &f- &cOFF";
+	public String en_us_wait = "&cCooldown...";
+
 	public List<String> en_us_LobbyList = Arrays.asList(
 			"&7&m---------------------------",
 			"&fPlayers: &6<players>",
+			"&fServer: &e<server>",
 			"&fVote ends in &6<starting>&f !",
 			" ",
 			"&fTimebomb:&6 <s1>",
