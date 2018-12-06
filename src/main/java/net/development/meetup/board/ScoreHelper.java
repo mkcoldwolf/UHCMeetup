@@ -92,12 +92,26 @@ public class ScoreHelper {
 		sidebar.setDisplayName(title.length() > 32 ? title.substring(0, 32) : title);
 	}
 
+	public void setSpectateTag() {
+		if (Main.getGM().spectators.contains(uuid)) {
+			Team spectateTeam = scoreboard.getTeam("9spectate");
+			if (spectateTeam == null) {
+				spectateTeam = scoreboard.registerNewTeam("9spectate");
+			}
+			spectateTeam.setPrefix("§8");
+			spectateTeam.addEntry(UUIDCache.getName(uuid));
+		}
+	}
+
 	public void setColoredTag() {
 
 		boolean spectating = false;
 
 		if (Main.getGM().spectators.contains(uuid)) {
-			final Team spectateTeam = scoreboard.registerNewTeam("9spectate");
+			Team spectateTeam = scoreboard.getTeam("9spectate");
+			if (spectateTeam == null) {
+				spectateTeam = scoreboard.registerNewTeam("9spectate");
+			}
 			spectateTeam.setPrefix("§8");
 			spectateTeam.addEntry(UUIDCache.getName(uuid));
 			spectating = true;
@@ -121,11 +135,8 @@ public class ScoreHelper {
 				} else {
 					t = teams.get(team.id);
 				}
-				if (team.p1 != null && !(spectating && team.p1 == uuid)) {
-					t.addEntry(UUIDCache.getName(team.p1));
-				}
-				if (team.p2 != null && !(spectating && team.p2 == uuid)) {
-					t.addEntry(UUIDCache.getName(team.p2));
+				for (final UUID uuid : team.members) {
+					t.addEntry(UUIDCache.getName(uuid));
 				}
 			}
 		} else {

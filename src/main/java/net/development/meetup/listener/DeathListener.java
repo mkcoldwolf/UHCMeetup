@@ -1,7 +1,5 @@
 package net.development.meetup.listener;
 
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -47,17 +45,12 @@ public class DeathListener implements Listener {
 		PlayerManager.setPlayerSpec(p, true);
 		((CraftPlayer)p).getHandle().setFakingDeath(true);
 
+
+
 		final Player killer = p.getKiller();
 
 		checkWin.checkWins();
-		if (Main.getGM().players.size() <= 5 && !(Main.getGM().players.size() <= 1)) {
-			for (final Player player : Bukkit.getOnlinePlayers()) {
-				player.playSound(player.getLocation(), Sound.NOTE_PLING, 1, 1);
-				for (final String a : Main.get().getLang().translateArrays(p, "ppl5BroadCast")) {
-					player.sendMessage(ChatColor.translateAlternateColorCodes('&', a));
-				}
-			}
-		}
+		Main.getGM().broadcastNoclean();
 
 		if (killer == null) {
 			Main.get().getLang().send("death", RV.o("{0}", p.getName()), RV.o("{1}", profile.getKills() + ""));

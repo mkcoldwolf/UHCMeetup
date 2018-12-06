@@ -11,9 +11,6 @@ import org.bukkit.scheduler.BukkitRunnable;
 import net.development.meetup.Main;
 import net.development.meetup.board.BoardSetup;
 import net.development.meetup.enums.Status;
-import net.development.meetup.options.TeamGUI;
-import net.development.meetup.player.UHCPlayer;
-import net.development.meetup.player.UHCTeam;
 import net.development.meetup.scenarios.ScenariosEnable;
 import net.development.meetup.util.PlaySound;
 import net.development.meetup.util.Sit;
@@ -27,27 +24,8 @@ public class ReleaseTask extends BukkitRunnable {
 			ScenariosEnable.IronKingE = true;
 		}
 		RELEASE_TIME = 15;
-		if (!Main.TeamMode) return;
-		loop:
-			for (final Player p : Bukkit.getOnlinePlayers()) {
-				final UHCPlayer up = Main.getGM().getData.get(p.getUniqueId());
-				if (!up.isInTeam()) {
-					for (int i = 0; i <= 27; i++) {
-						final UHCTeam team = TeamGUI.getInstance().teams.get(i);
-						if (team.p1 == null) {
-							team.p1 = p.getUniqueId();
-							up.setTeam(team, i);
-							p.sendMessage("§a你加入了隊伍 " + (i + 1) + " !");
-							continue loop;
-						} else if (team.p2 == null) {
-							team.p2 = p.getUniqueId();
-							up.setTeam(team, i);
-							p.sendMessage("§a你加入了隊伍 " + (i + 1) + " !");
-							continue loop;
-						}
-					}
-				}
-			}
+		if (!Main.TeamMode)
+			return;
 	}
 
 	@Override

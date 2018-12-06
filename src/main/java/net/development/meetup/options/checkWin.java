@@ -1,5 +1,8 @@
 package net.development.meetup.options;
 
+import java.util.UUID;
+import java.util.stream.Collectors;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -18,19 +21,14 @@ public class checkWin {
 			if (TeamGUI.getInstance().getLastTeam() != null) {
 				final UHCTeam win = TeamGUI.getInstance().getLastTeam();
 
-				final Player player1 = Bukkit.getPlayer(win.p1);
-				final Player player2 = Bukkit.getPlayer(win.p2);
-
-				if (player1 != null) {
-					new FireworkTask(player1).runTaskTimer(Main.get(), 10L, 20L);
-				}
-				if (player2 != null) {
-					new FireworkTask(player2).runTaskTimer(Main.get(), 10L, 20L);
+				for (final UUID uuid : win.members) {
+					final Player player = Bukkit.getPlayer(uuid);
+					new FireworkTask(player).runTaskTimer(Main.get(), 10L, 20L);
 				}
 				PlaySound.PlaySoundAll(Sound.WITHER_DEATH);
 
 				Main.get().getLang().send("win_team", RV.o("0", (win.id + 1) + ""));
-				Main.get().getLang().send("team_members", RV.o("0", (win.p1 != null ? UUIDCache.getName(win.p1) : "") + (win.p2 != null ? win.p1 != null ? ", " + UUIDCache.getName(win.p2) : UUIDCache.getName(win.p2) : "")));
+				Main.get().getLang().send("team_members", RV.o("0", win.members.stream().map(UUIDCache::getName).collect(Collectors.joining(", "))));
 
 				Bukkit.getScheduler().runTaskLater(Main.get(), () -> {
 					for (final Player p : Bukkit.getOnlinePlayers()) {

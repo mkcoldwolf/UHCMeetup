@@ -6,9 +6,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -18,6 +20,7 @@ import com.google.common.io.ByteStreams;
 
 import net.development.meetup.Main;
 import net.development.meetup.border.Config;
+import net.development.meetup.options.TeamGUI;
 import net.development.meetup.player.UHCPlayer;
 import net.development.meetup.task.LobbyTask;
 import net.development.mitw.utils.ItemBuilder;
@@ -118,6 +121,40 @@ public class GameManager {
 		out.writeUTF(server);
 
 		p.sendPluginMessage(Main.get(), "BungeeCord", out.toByteArray());
+
+	}
+
+	public void broadcastNoclean() {
+
+		if (Main.TeamMode) {
+
+			if (TeamGUI.getInstance().getTeamAlive() < 4 && Main.getGM().players.size() > 1) {
+
+				for (final Player player : Bukkit.getOnlinePlayers()) {
+					for (final String a : Main.get().getLang().translateArrays(player, "ppl5BroadCast" + (Main.TeamMode ? "_team" : ""))) {
+						player.sendMessage(a);
+					}
+					player.playSound(player.getLocation(), Sound.NOTE_PLING, 1, 1);
+				}
+
+				return;
+
+			}
+
+			return;
+
+		}
+
+		if (Main.getGM().players.size() <= 5 && Main.getGM().players.size() > 1) {
+
+			for (final Player player : Bukkit.getOnlinePlayers()) {
+				for (final String a : Main.get().getLang().translateArrays(player, "ppl5BroadCast" + (Main.TeamMode ? "_team" : ""))) {
+					player.sendMessage(a);
+				}
+				player.playSound(player.getLocation(), Sound.NOTE_PLING, 1, 1);
+			}
+
+		}
 
 	}
 

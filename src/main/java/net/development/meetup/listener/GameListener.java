@@ -9,6 +9,7 @@ import java.util.UUID;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -39,7 +40,8 @@ import org.bukkit.event.server.ServerListPingEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
-import org.bukkit.scheduler.BukkitRunnable;
+
+import com.ilummc.tlib.util.Strings;
 
 import net.development.meetup.Lang;
 import net.development.meetup.Main;
@@ -48,6 +50,7 @@ import net.development.meetup.manager.PlayerManager;
 import net.development.meetup.player.UHCPlayer;
 import net.development.meetup.scenarios.ScenariosEnable;
 import net.development.meetup.util.SpecInv;
+import net.development.mitw.utils.BukkitUtil;
 import net.md_5.bungee.api.ChatColor;
 
 public class GameListener implements Listener {
@@ -90,10 +93,8 @@ public class GameListener implements Listener {
 	@EventHandler
 	public void onClick(final PlayerInteractEvent e) {
 
-		if (!e.getAction().equals(Action.LEFT_CLICK_AIR) &&
-				!e.getAction().equals(Action.LEFT_CLICK_BLOCK) &&
-				!e.getAction().equals(Action.RIGHT_CLICK_AIR) &&
-				!e.getAction().equals(Action.RIGHT_CLICK_BLOCK))
+		if (!e.getAction().equals(Action.LEFT_CLICK_AIR) && !e.getAction().equals(Action.LEFT_CLICK_BLOCK)
+				&& !e.getAction().equals(Action.RIGHT_CLICK_AIR) && !e.getAction().equals(Action.RIGHT_CLICK_BLOCK))
 			return;
 
 		if (Status.isState(Status.TELEPORT))
@@ -260,6 +261,8 @@ public class GameListener implements Listener {
 		}
 	}
 
+	private final DecimalFormat format = new DecimalFormat("0.0");
+
 	@EventHandler
 	public void onDamageByEntity(final EntityDamageByEntityEvent e) {
 		if (!(e.getEntity() instanceof Player)) {
@@ -278,37 +281,54 @@ public class GameListener implements Listener {
 			e.setCancelled(true);
 			return;
 		}
-		if (e.getDamager() instanceof Player) {
-			final Player k = (Player) e.getDamager();
-			if (Main.getGM().spectators.contains(k.getUniqueId())) {
+
+		final Player k = BukkitUtil.getDamager(e);
+		if (k == null)
+			return;
+
+		if (Main.getGM().spectators.contains(k.getUniqueId())) {
+			e.setCancelled(true);
+			return;
+		}
+
+		if (Main.TeamMode) {
+
+			final UHCPlayer up = Main.getGM().getData.get(p.getUniqueId());
+			final UHCPlayer kp = Main.getGM().getData.get(k.getUniqueId());
+
+			if (up.getTeam() != null && kp.getTeam() != null && up.getTeam().equals(kp.getTeam())
+					&& (e.getDamager() instanceof Player || e.getDamager() instanceof Arrow)) {
+
 				e.setCancelled(true);
 				return;
+
 			}
-			if (Main.TeamMode) {
-				final UHCPlayer up = Main.getGM().getData.get(p.getUniqueId());
-				final UHCPlayer kp = Main.getGM().getData.get(k.getUniqueId());
-				if (up.getTeam() != null && kp.getTeam() != null && up.getTeam().equals(kp.getTeam())) {
-					e.setCancelled(true);
-					return;
-				}
-			}
-			if (Main.getGM().getData.get(k.getUniqueId()).isNoClean()) {
-				Main.getGM().getData.get(k.getUniqueId()).setNoClean(false);
-				k.sendMessage(Main.get().getLang().translate(k, "noCleanStop"));
-			}
-			return;
+
 		}
+
+		if (Main.getGM().getData.get(k.getUniqueId()).isNoClean()) {
+			Main.getGM().getData.get(k.getUniqueId()).setNoClean(false);
+			k.sendMessage(Main.get().getLang().translate(k, "noCleanStop"));
+		}
+
 		if (!(e.getDamager() instanceof Arrow))
 			return;
-		final Arrow a = (Arrow) e.getDamager();
-		if (a.getShooter() instanceof Player) {
-			new BukkitRunnable() {
-				@Override
-				public void run() {
-					((Player) a.getShooter()).sendMessage(Main.get().getLang().translate((Player) a.getShooter(), "bow").replace("<player>", p.getName()).replace("<health>", new DecimalFormat("0.00").format(p.getHealth() / 2) + "\u2764"));
-				}
-			}.runTaskLaterAsynchronously(Main.get(), 2L);
+
+		double damage = e.getFinalDamage();
+		double absorptionHealth = ((CraftPlayer)p).getHandle().getAbsorptionHearts();
+		final double absorptionDamage = Math.ceil(absorptionHealth - damage) / 2.0;
+
+		if (absorptionDamage > 0.0D) {
+			absorptionHealth = absorptionDamage;
+			damage = 0.0;
+		} else {
+			damage -= absorptionHealth;
+			absorptionHealth = 0.0;
 		}
+
+		final double health = Math.ceil(((Player) e.getEntity()).getHealth() - damage) / 2.0D;
+
+		k.sendMessage(Strings.replaceWithOrder(Main.get().getLang().translate(k, "arrowDamage"), p.getName(), format.format(health) + "\u2764", format.format(absorptionHealth) + "\u2764"));
 	}
 
 	@EventHandler
@@ -374,9 +394,9 @@ public class GameListener implements Listener {
 
 	@EventHandler
 	public void onFire(final EntityDamageEvent e) {
-		if (e.getEntity() instanceof Player && (ScenariosEnable.FireLessE || Main.getGM().getData.get(e.getEntity().getUniqueId()).isNoClean())
-				&& (e.getCause().equals(DamageCause.FIRE)
-						|| e.getCause().equals(DamageCause.LAVA)
+		if (e.getEntity() instanceof Player
+				&& (ScenariosEnable.FireLessE || Main.getGM().getData.get(e.getEntity().getUniqueId()).isNoClean())
+				&& (e.getCause().equals(DamageCause.FIRE) || e.getCause().equals(DamageCause.LAVA)
 						|| e.getCause().equals(DamageCause.FIRE_TICK))) {
 			e.setCancelled(true);
 		}

@@ -1,29 +1,49 @@
 package net.development.meetup.player;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
 import net.development.meetup.Main;
+import net.development.meetup.options.TeamGUI;
 
 public class UHCTeam {
 
-	public UUID p1;
-	public UUID p2;
+	public List<UUID> members = new ArrayList<>();
 	public int id;
 	public Location scatter;
 	public int kills;
 
-	public UHCTeam(final Player p1, final Player p2, final int id) {
-		this.p1 = p1 == null ? null : p1.getUniqueId();
-		this.p2 = p2 == null ? null : p2.getUniqueId();
+	public UHCTeam(final int id) {
 		this.id = id;
 	}
 
 	public boolean isAlive() {
-		return (Bukkit.getPlayer(p1) != null && Main.getGM().players.contains(p1)) || (Bukkit.getPlayer(p2) != null && Main.getGM().players.contains(p2));
+		for (final UUID uuid : members) {
+			if (Main.getGM().players.contains(uuid))
+				return true;
+		}
+		return false;
+	}
+
+	public static void fillTeams() {
+		loop: for (final Player p : Main.get().getServer().getOnlinePlayers()) {
+			final UHCPlayer up = Main.getGM().getData.get(p.getUniqueId());
+			if (!up.isInTeam()) {
+				for (int i = 0; i < 27; i++) {
+					final UHCTeam team = TeamGUI.getInstance().teams.get(i);
+					if (team.members.size() < 2) {
+						team.members.add(p.getUniqueId());
+						up.setTeam(team, i);
+						p.sendMessage("§a你加入了隊伍 " + (i + 1) + " !");
+						continue loop;
+					}
+				}
+			}
+		}
 	}
 
 }

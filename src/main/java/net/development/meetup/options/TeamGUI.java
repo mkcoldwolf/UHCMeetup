@@ -2,6 +2,7 @@ package net.development.meetup.options;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -19,9 +20,9 @@ public class TeamGUI {
 	public Inventory gui = Bukkit.createInventory(null, 3 * 9, "§e選擇隊伍!");
 
 	public TeamGUI() {
-		for (int i = 0; i <= 27; i++) {
+		for (int i = 0; i < 27; i++) {
 			gui.addItem(ItemBuilder.createItem1(Material.WOOL, 1, 0, "§e隊伍 " + (i + 1), "§7人數: §60/2"));
-			teams.add(new UHCTeam(null, null, i));
+			teams.add(new UHCTeam(i));
 		}
 	}
 
@@ -38,20 +39,24 @@ public class TeamGUI {
 
 	public void updateGUI(final int team) {
 		final UHCTeam uteam = teams.get(team);
-		int size = 0;
-		if (uteam.p1 != null) {
-			size++;
-		}
-		if (uteam.p2 != null) {
-			size++;
-		}
+		final int size = uteam.members.size();
+		final net.development.mitw.utils.ItemBuilder builder = new net.development.mitw.utils.ItemBuilder(Material.WOOL);
+
 		if (size == 2) {
-			gui.setItem(team, ItemBuilder.createItem1(Material.WOOL, 1, 14, "§e隊伍 " + (team + 1), "§7人數: §6" + size + "/2", "§7- §e" + UUIDCache.getName(uteam.p1), "§7- §e" + UUIDCache.getName(uteam.p2)));
+			builder.durability(14);
 		} else if (size == 1) {
-			gui.setItem(team, ItemBuilder.createItem1(Material.WOOL, 1, 5, "§e隊伍 " + (team + 1), "§7人數: §6" + size + "/2", "§7- §e" + (uteam.p1 != null ? UUIDCache.getName(uteam.p1) : uteam.p2 != null ? UUIDCache.getName(uteam.p2) : "")));
+			builder.durability(5);
 		} else {
-			gui.setItem(team, ItemBuilder.createItem1(Material.WOOL, 1, 0, "§e隊伍 " + (team + 1), "§7人數: §6" + size + "/2"));
+			builder.durability(0);
 		}
+
+		builder.name("§e隊伍 " + (team + 1)).lore("§7人數: §6" + size + "/2");
+		for (final UUID uuid : uteam.members) {
+			builder.lore("§7- §e" + UUIDCache.getName(uuid));
+		}
+
+		gui.setItem(team, builder.build());
+
 	}
 
 	public int getTeamAlive() {

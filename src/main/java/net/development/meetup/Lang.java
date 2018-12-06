@@ -91,6 +91,9 @@ public class Lang {
 	public String zh_tw_dbmodeoff = "&fCleanup紀錄模式 &f- &cOFF";
 	public String zh_tw_wait = "&c冷卻中...";
 
+	public String zh_tw_arrowDamage = "&c{0} &7現在有 &c{1} &e{2}";
+	public String en_us_arrowDamage = "&c{0} &7now has &c{1} &e{2}";
+
 	public List<String> zh_tw_LobbyList = Arrays.asList(
 			"&7&m---------------------------",
 			"&f人數: &6<players>",
@@ -144,6 +147,12 @@ public class Lang {
 	public List<String> zh_tw_ppl5BroadCast = Arrays.asList(
 			"&c&m--------------------------------",
 			"&c&l遊戲現在只剩下5位玩家",
+			"&c&l開始禁止Clean up!",
+			"&c&l否則被檢舉,將Ban除2個小時",
+			"&c&m--------------------------------");
+	public List<String> zh_tw_ppl5BroadCast_team = Arrays.asList(
+			"&c&m--------------------------------",
+			"&c&l遊戲現在只剩下三個隊伍!",
 			"&c&l開始禁止Clean up!",
 			"&c&l否則被檢舉,將Ban除2個小時",
 			"&c&m--------------------------------");
@@ -249,6 +258,11 @@ public class Lang {
 			"&f&lTeaming in meetup ->&c&l Ban 3days",
 			"&7&m---------------------------");
 	public List<String> en_us_ppl5BroadCast = Arrays.asList(
+			"&c&m--------------------------------",
+			"&c&lYou can NOT clean now!",
+			"&c&lYOU WILL BE BANNED!",
+			"&c&m--------------------------------");
+	public List<String> en_us_ppl5BroadCast_team = Arrays.asList(
 			"&c&m--------------------------------",
 			"&c&lYou can NOT clean now!",
 			"&c&lYOU WILL BE BANNED!",
