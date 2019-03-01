@@ -1,60 +1,336 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="773758c2-097d-4c6e-90fb-0392d14c9387" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+    <list default="true" id="302ccf31-6be1-48ef-ac09-eb0d313b87fe" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/board/Board.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/board/BoardAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/board/BoardEntry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/board/BoardManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/board/BoardTimer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/board/adapter/UHCMeetupAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/border/BorderBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/commands/MeetupCommands.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/gui/SimpleInventorySnapshot.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/scenarios/Scenario.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/scenarios/ScenarioMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/util/CStringBuffer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/util/StringUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mitw-UHCMeetup.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/development/meetup/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/manager/KitManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/development/meetup/manager/KitManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.core.resources.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/.settings/org.eclipse.core.resources.prefs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/Mitw-1.0.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/libs/Mitw-1.0.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/Commands.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/Lang.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/Lang.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/UHCMeetup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/board/BoardSetup.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/board/ScoreHelper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/board/create/CreateLobbyBoard.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/board/create/CreateSoloBoard.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/board/create/CreateTeamBoard.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/board/create/CreateTeleportBoard.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/border/BorderCheckTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/border/worldborder/BorderCheckTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/border/BorderData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/border/worldborder/BorderData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/border/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/border/worldborder/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/border/CoordXZ.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/border/worldborder/CoordXZ.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/border/WBListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/border/worldborder/WBListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/border/WorldFileData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/border/worldborder/WorldFileData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/border/WorldFillTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/border/worldborder/WorldFillTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/border/barrier/BlockFiller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/border/barrier/BlockFiller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/border/barrier/VisualBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/border/barrier/VisualBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/border/barrier/VisualBlockData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/border/barrier/VisualBlockData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/border/barrier/VisualRunnable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/border/barrier/VisualRunnable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/border/barrier/VisualType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/border/barrier/VisualType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/border/barrier/VisualiseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/border/barrier/VisualiseHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/enums/Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/enums/GameStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/impl/NocleanTimer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/impl/NocleanTimer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/listener/DeathListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/listener/DeathListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/listener/GUIListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/listener/GameListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/listener/GameListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/listener/JoinListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/listener/JoinListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/listener/QuitListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/listener/QuitListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/manager/ArenaManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/manager/ArenaManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/manager/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/manager/GameManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/manager/KitManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/manager/KitManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/manager/PlayerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/manager/PlayerManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/options/TeamGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/manager/TeamManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/options/checkWin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/options/generateScatter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/options/loadChunk.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/player/UHCPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/player/PlayerProfile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/player/UHCTeam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/player/UHCTeam.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/scenarios/AirDrops.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/scenarios/AirDrops.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/scenarios/SMenu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/scenarios/ScenariosEnable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/task/AirDropsTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/task/AirDropsTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/task/DebugTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/task/DebugTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/task/FireworkTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/task/FireworkTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/task/GameTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/task/GameTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/task/LobbyTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/task/LobbyTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/task/PVPBorderTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/task/PVPBorderTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/task/ReleaseTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/task/ReleaseTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/task/TeleportTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/task/TeleportTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/util/Border.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/util/EnchantGlow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/util/ItemBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/util/ItemUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/util/Menu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/util/PlaySound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/util/SoundUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/util/Sit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/util/SitUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/util/SpecInv.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/util/Tools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/util/Util.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/util/cuboid/Cuboid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/util/cuboid/Cuboid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/util/cuboid/CuboidBlockIterator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/util/cuboid/CuboidBlockIterator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/util/cuboid/CuboidDirection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/util/cuboid/CuboidDirection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/development/meetup/util/cuboid/CuboidLocationIterator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mitw/meetup/util/cuboid/CuboidLocationIterator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="1034869602">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="2" />
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.7" value="1" />
+          <entry key="project.opened" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="class" value="3" />
+          <entry key="java" value="157" />
+          <entry key="xml" value="2" />
+          <entry key="yml" value="6" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="CLASS" value="3" />
+          <entry key="JAVA" value="157" />
+          <entry key="XML" value="2" />
+          <entry key="YAML" value="6" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="dummy" value="39" />
+          <entry key="java" value="6254" />
+          <entry key="txt" value="8" />
+          <entry key="xml" value="2" />
+          <entry key="yml" value="34" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="6254" />
+          <entry key="PLAIN_TEXT" value="47" />
+          <entry key="XML" value="2" />
+          <entry key="YAML" value="34" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/net/development/meetup/Main.java">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/UHCMeetup.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="560">
-              <caret line="160" column="37" selection-start-line="160" selection-start-column="37" selection-end-line="160" selection-end-column="37" />
+            <state relative-caret-position="377">
+              <caret line="73" column="42" selection-start-line="73" selection-start-column="42" selection-end-line="73" selection-end-column="42" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="KitManager.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/net/development/meetup/manager/KitManager.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="52" column="59" lean-forward="true" selection-start-line="52" selection-start-column="59" selection-end-line="52" selection-end-column="59" />
+            <state relative-caret-position="-222" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/util/ItemUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="141">
+              <caret line="141" selection-start-line="141" selection-end-line="141" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/gui/SimpleInventorySnapshot.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="20" column="13" lean-forward="true" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/commands/MeetupCommands.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/listener/GameListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="203">
+              <caret line="263" column="63" selection-start-line="263" selection-start-column="63" selection-end-line="263" selection-end-column="63" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/plugin.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/Lang.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="369">
+              <caret line="114" column="24" selection-start-line="114" selection-start-column="24" selection-end-line="114" selection-end-column="43" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/manager/ArenaManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-230">
+              <caret line="111" column="39" selection-start-line="111" selection-start-column="39" selection-end-line="111" selection-end-column="39" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>UHCMeetup.getInstance()</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>plugin.</replace>
+      <replace>plugin</replace>
+    </replaceStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="projectSyncType">
+      <map>
+        <entry key="D:/Java/Client/1.13" value="PREVIEW" />
+        <entry key="D:/Java/Forge/forge-1.7.10" value="PREVIEW" />
+      </map>
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/net/development/meetup/manager/KitManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/development/meetup/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/development/meetup/UHCMeetup.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/util/Sit.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/board/BoardAdapter.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/board/create/CreateSoloBoard.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/util/StringUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/util/CStringBuffer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/util/Tools.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/enums/Status.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/enums/GameStatus.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/border/barrier/VisualiseHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/listener/GUIListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/board/BoardManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/scenarios/AirDrops.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/task/LobbyTask.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/task/TeleportTask.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/options/TeamManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/util/SoundUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/util/Util.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/border/BorderBuilder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/border/Config.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/task/PVPBorderTask.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/task/GameTask.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/manager/PlayerManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/board/Board.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/impl/NocleanTimer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/manager/ArenaManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/manager/TeamManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/player/UHCTeam.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/border/worldborder/BorderCheckTask.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/scenarios/Scenario.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/player/PlayerProfile.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/task/ReleaseTask.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/listener/JoinListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/manager/KitManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/Commands.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/board/adapter/UHCMeetupAdapter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/listener/DeathListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/scenarios/ScenarioMenu.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/listener/QuitListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/manager/GameManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/util/ItemUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/gui/GUI.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/gui/SimpleInventorySnapshot.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/Lang.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/plugin.yml" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/UHCMeetup.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/commands/MeetupCommands.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mitw/meetup/listener/GameListener.java" />
       </list>
     </option>
   </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="MitwMeetup" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="width" value="1400" />
-    <option name="height" value="820" />
+    <option name="x" value="-70" />
+    <option name="y" value="-17" />
+    <option name="width" value="1936" />
+    <option name="height" value="1096" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -62,7 +338,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -73,6 +349,11 @@
             <path>
               <item name="MitwMeetup" type="b2602c69:ProjectViewProjectNode" />
               <item name="UHCMeetup" type="462c0819:PsiDirectoryNode" />
+              <item name="libs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MitwMeetup" type="b2602c69:ProjectViewProjectNode" />
+              <item name="UHCMeetup" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -103,21 +384,45 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="meetup" type="462c0819:PsiDirectoryNode" />
-              <item name="manager" type="462c0819:PsiDirectoryNode" />
+              <item name="commands" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MitwMeetup" type="b2602c69:ProjectViewProjectNode" />
+              <item name="UHCMeetup" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="meetup" type="462c0819:PsiDirectoryNode" />
+              <item name="gui" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MitwMeetup" type="b2602c69:ProjectViewProjectNode" />
+              <item name="UHCMeetup" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="模組" />
-    <property name="project.structure.proportion" value="0.15" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/Admin/git/UHCMeetup/src/main/java/mitw/meetup/Lang.java" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551412416536" />
+    <property name="last_opened_file_path" value="D:/Java/Spigot/RageSpigot" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="settings.github" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\git\UHCMeetup\libs" />
+      <recent name="C:\Users\Admin\git\UHCMeetup\src\main\java\mitw\meetup\board" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -131,108 +436,392 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="Application" factoryName="Application">
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-    </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit">
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration default="true" type="TestNG" factoryName="TestNG">
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <properties />
-      <listeners />
-    </configuration>
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="773758c2-097d-4c6e-90fb-0392d14c9387" name="Default Changelist" comment="" />
-      <created>1542416759755</created>
+      <changelist id="302ccf31-6be1-48ef-ac09-eb0d313b87fe" name="Default Changelist" comment="" />
+      <created>1551289407705</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1542416759755</updated>
+      <updated>1551289407705</updated>
     </task>
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info id="Image Layers" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="right" id="Maven Projects" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info id="Capture Tool" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
-      <window_info anchor="right" id="調色板" />
-      <window_info id="設計器" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2550586" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="UI Designer" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info id="設計器" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49893504" weight="0.32937366" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49840257" visible="true" weight="0.32937366" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50159746" side_tool="true" visible="true" weight="0.32937366" />
+      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="調色板" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="right" id="Maven Projects" order="7" visible="true" weight="0.32960597" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/development/meetup/Main.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/net/development/mitw/Mitw/1.0.0/Mitw-1.0.0.jar!/net/development/mitw/menu/Menu.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="160" column="37" selection-start-line="160" selection-start-column="37" selection-end-line="160" selection-end-column="37" />
+        <state relative-caret-position="36">
+          <caret line="149" column="16" selection-start-line="149" selection-start-column="16" selection-end-line="149" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/development/meetup/manager/KitManager.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/util/SoundUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="52" column="59" lean-forward="true" selection-start-line="52" selection-start-column="59" selection-end-line="52" selection-end-column="59" />
+        <state relative-caret-position="30">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/util/Util.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="370">
+          <caret line="101" column="18" selection-start-line="101" selection-start-column="18" selection-end-line="101" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/border/BorderBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="121" column="21" lean-forward="true" selection-start-line="121" selection-start-column="21" selection-end-line="121" selection-end-column="21" />
+          <folding>
+            <element signature="e#177#204#0" expanded="true" />
+            <element signature="e#521#553#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/util/CStringBuffer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/util/Border.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/java/util/Map.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="271" column="6" selection-start-line="271" selection-start-column="6" selection-end-line="271" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/task/PVPBorderTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/manager/PlayerManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="35" column="27" selection-start-line="35" selection-start-column="27" selection-end-line="35" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/board/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="105" column="74" lean-forward="true" selection-start-line="105" selection-start-column="74" selection-end-line="105" selection-end-column="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/impl/NocleanTimer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="20" column="89" selection-start-line="20" selection-start-column="89" selection-end-line="20" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/border/worldborder/BorderCheckTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/border/worldborder/BorderData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/border/worldborder/Config.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/border/worldborder/CoordXZ.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/border/worldborder/WBListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/border/worldborder/WorldFileData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/border/worldborder/WorldFillTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/scenarios/ScenariosEnable.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/scenarios/SMenu.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/scenarios/AirDrops.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="55" column="44" selection-start-line="55" selection-start-column="44" selection-end-line="55" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/player/PlayerProfile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="21" column="11" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/scenarios/Scenario.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/player/UHCTeam.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="26" column="28" lean-forward="true" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/listener/JoinListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="53" column="13" lean-forward="true" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/manager/KitManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="57" column="41" selection-start-line="57" selection-start-column="41" selection-end-line="57" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/listener/DeathListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="38" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/scenarios/ScenarioMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1335">
+          <caret line="89" column="11" selection-start-line="89" selection-start-column="11" selection-end-line="89" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/manager/TeamManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2175">
+          <caret line="145" column="8" selection-start-line="145" selection-start-column="8" selection-end-line="166" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/task/AirDropsTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/task/ReleaseTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="645">
+          <caret line="43" column="40" selection-start-line="43" selection-start-column="40" selection-end-line="43" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/task/GameTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/listener/QuitListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="40" column="47" lean-forward="true" selection-start-line="40" selection-start-column="47" selection-end-line="40" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/manager/GameManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2808">
+          <caret line="206" column="14" lean-forward="true" selection-start-line="206" selection-start-column="14" selection-end-line="206" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/board/adapter/UHCMeetupAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1455">
+          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/enums/GameStatus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/net/development/mitw/Mitw/1.0.0/Mitw-1.0.0.jar!/net/development/mitw/language/LanguageAPI.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/manager/ArenaManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-230">
+          <caret line="111" column="39" selection-start-line="111" selection-start-column="39" selection-end-line="111" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/util/EnchantGlow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/util/SpecInv.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1395">
+          <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/util/Menu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-297">
+          <caret line="21" column="14" lean-forward="true" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/util/ItemUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="141" selection-start-line="141" selection-end-line="141" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/gui/GUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="20" column="108" selection-start-line="20" selection-start-column="108" selection-end-line="20" selection-end-column="108" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-222" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/Commands.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="64" selection-start-line="16" selection-start-column="64" selection-end-line="16" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/Lang.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="114" column="24" selection-start-line="114" selection-start-column="24" selection-end-line="114" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/plugin.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/UHCMeetup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="73" column="42" selection-start-line="73" selection-start-column="42" selection-end-line="73" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/commands/MeetupCommands.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/gui/SimpleInventorySnapshot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="13" lean-forward="true" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mitw/meetup/listener/GameListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="263" column="63" selection-start-line="263" selection-start-column="63" selection-end-line="263" selection-end-column="63" />
         </state>
       </provider>
     </entry>
@@ -286,5 +875,9 @@
         </settings>
       </state>
     </states>
+  </component>
+  <component name="mavenExecuteGoalHistory">
+    <option value="$PROJECT_DIR$" />
+    <option value="clean install" />
   </component>
 </project>

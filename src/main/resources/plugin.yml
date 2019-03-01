@@ -1,9 +1,5 @@
-main: net.development.meetup.Main
-name: Mmeetup
+main: mitw.meetup.UHCMeetup
+name: MitwMeetup
 version: 1.0
 author: LeeGod
 depend: [Mitw]
-commands:
-  vote:
-  team:
-  lang:
