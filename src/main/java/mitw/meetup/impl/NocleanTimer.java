@@ -18,6 +18,12 @@ public class NocleanTimer extends PlayerTimer {
 	@Override
 	protected void handleExpiry(final Player player, final UUID playerUUID) {
 
+		super.handleExpiry(player, playerUUID);
+
+		if (player == null || !player.isOnline()) {
+			return;
+		}
+
 		final PlayerProfile profile = UHCMeetup.getInstance().getGameManager().getProfile(playerUUID);
 
 		profile.setNoClean(false);

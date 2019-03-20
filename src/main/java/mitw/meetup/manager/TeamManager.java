@@ -4,6 +4,7 @@ import java.util.*;
 
 import lombok.RequiredArgsConstructor;
 import mitw.meetup.UHCMeetup;
+import mitw.meetup.enums.GameStatus;
 import mitw.meetup.player.PlayerProfile;
 import mitw.meetup.player.UHCTeam;
 import net.development.mitw.menu.Button;
@@ -111,6 +112,12 @@ public class TeamManager {
 
         @Override
         public void clicked(Player player, int slot, ClickType clickType, int hotbarButton) {
+
+            if (!GameStatus.is(GameStatus.WAITING)) {
+                player.closeInventory();
+                return;
+            }
+
             final PlayerProfile up = UHCMeetup.getInstance().getGameManager().getProfile(player.getUniqueId());
 
             if (team.members.contains(player.getUniqueId())) {

@@ -127,6 +127,39 @@ public class Lang {
 	public String en_us_scenario_menu_title = "&e&lChoose a scenario!";
 	public String zh_tw_scenario_menu_title = "&e&l選擇你想要的模式!";
 
+	public String zh_tw_scenario_vote_full = "§c這個模式的投票數已滿!";
+	public String en_us_scenario_vote_full = "§cThis scenario votes is full!";
+
+	public List<String> zh_tw_description_noclean = Arrays.asList("&7模式說明", "  &f當你擊殺一位玩家,你將會有&c&l20&f秒的無敵時間!");
+	public List<String> en_us_description_noclean = Arrays.asList("&7Mode Information", "  &fYou will get &c&l20&fseconds of invincibility &fafter killing a player!");
+
+	public List<String> zh_tw_description_timebomb = Arrays.asList("&7模式說明", "  &7玩家死亡的時候,會將所有物品裝入&e大箱子中", "  &7而一定時間&7後他將會爆炸產生&4&l大量傷害");
+	public List<String> en_us_description_timebomb = Arrays.asList("&7Mode Information", "  &7When a player dies, all of his items will be put into &ea double chest", "  &7After a period of time, &7the chest will explode &4&land it deals A LOT OF damage");
+
+	public List<String> zh_tw_description_rodless = Arrays.asList("&7模式說明", "  &e釣竿&7將無法使用");
+	public List<String> en_us_description_rodless = Arrays.asList("&7Mode Information", "  &7You can not use &eFishing rods");
+
+	public List<String> zh_tw_description_bowless = Arrays.asList("&7模式說明", "  &e弓箭&7將無法使用");
+	public List<String> en_us_description_bowless = Arrays.asList("&7Mode Information", "  &7You can not use &eBows");
+
+	public List<String> zh_tw_description_fireless = Arrays.asList("&7模式說明", "  &c岩漿及任何火焰&f不會產生任何傷害!");
+	public List<String> en_us_description_fireless = Arrays.asList("&7Mode Information", "  &cLava and flame &fdo not deal damage!");
+
+	public List<String> zh_tw_description_airdrops = Arrays.asList("&7模式說明", "  &e每隔一段時間&7 會空投&a&l非常好的物資&7到地圖上");
+	public List<String> en_us_description_airdrops = Arrays.asList("&7Mode Information", "  &eonce in a while &7the system will drop&a&l some GOOD stuffs&7 to the arena");
+
+	public List<String> zh_tw_description_ironrush = Arrays.asList("&7模式說明", "  &7開場後所有人都會是&f&l全鐵裝");
+	public List<String> en_us_description_ironrush = Arrays.asList("&7Mode Information", "  &7Everyone will be &f&lFull iron");
+
+	public String zh_tw_sudden_death_countdown = "&7[&c&l隨機&f&l死亡&7] &7隨機死亡 將在 &c%0&7 後開始!";
+	public String en_us_sudden_death_countdown = "&7[&c&lSudden&f&lDeath&7] &7Sudden death starting in &c%0&7!";
+
+	public String zh_tw_sudden_death_start = "&7[&c&l隨機&f&l死亡&7] &c隨機死亡 開始!";
+	public String en_us_sudden_death_start = "&7[&c&lSudden&f&lDeath&7] &cSudden death are now started!";
+
+	public String zh_tw_sudden_death = "隨機死亡";
+	public String en_us_sudden_death = "Sudden death";
+
 	public List<String> zh_tw_vote_nonFull = Arrays.asList("&7&m----------------------", "<description>", " ", "&e投票數: <votes>", "&7&m----------------------");
 	public List<String> zh_tw_vote_full = Arrays.asList("&7&m----------------------", "<description>", " ", "&c&l投票已滿", "&7&m----------------------");
 
@@ -156,6 +189,7 @@ public class Lang {
 			"&f擊殺數:&6 <kills>",
 			"&f邊界:&6 <border> <format>",
 			"<noclean>",
+			"<suddenDeath>",
 			" ",
 			"&6&lMitw.Rip",
 			"&7&m---------------------------");
@@ -167,6 +201,7 @@ public class Lang {
 			"&f隊伍擊殺數:&6 <teamKills>",
 			"&f邊界:&6 <border> <format>",
 			"<noclean>",
+			"<suddenDeath>",
 			" ",
 			"&6&lMitw.Rip",
 			"&7&m---------------------------");
@@ -282,6 +317,7 @@ public class Lang {
 			"&fKills:&6 <kills>",
 			"&fBorder:&6 <border> <format>",
 			"<noclean>",
+			"<suddenDeath>",
 			" ",
 			"&6&lMitw.Rip",
 			"&7&m---------------------------");
@@ -293,6 +329,7 @@ public class Lang {
 			"&fTeam kills:&6 <teamKills>",
 			"&fBorder:&6 <border> <format>",
 			"<noclean>",
+			"<suddenDeath>",
 			" ",
 			"&6&lMitw.Rip",
 			"&7&m---------------------------");

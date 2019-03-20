@@ -61,7 +61,7 @@ public class SimpleInventorySnapshot extends Menu {
                 .name(UHCMeetup.getInstance().getLanguage().translate(player, "health") + StringUtil.FORMAT.format(health)).build()));
         buttons.put(43, new NullActionButton(new ItemBuilder(Material.COOKED_BEEF)
                 .name(UHCMeetup.getInstance().getLanguage().translate(player, "hunger") + StringUtil.FORMAT.format(hunger)).build()));
-
+        buttons.put(42, new StatsButton());
 
         return buttons;
     }

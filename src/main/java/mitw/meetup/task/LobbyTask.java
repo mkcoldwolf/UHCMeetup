@@ -32,10 +32,19 @@ public class LobbyTask extends BukkitRunnable {
 			this.cancel();
 		}
 		if (i == 0) {
+			GameStatus.set(GameStatus.TELEPORT);
+
+			for (Player player : Bukkit.getOnlinePlayers()) {
+
+				if (player.getOpenInventory() != null) {
+					player.closeInventory();
+				}
+
+			}
+
 			start = false;
 			SoundUtil.PlaySoundAll(Sound.NOTE_PLING);
 			UHCMeetup.getInstance().getGameManager().max = UHCMeetup.getInstance().getGameManager().players.size();
-			GameStatus.set(GameStatus.TELEPORT);
 			UHCTeam.fillTeams();
 			new TeleportTask().runTaskTimer(UHCMeetup.getInstance(), 20L, 5L);
 			new ReleaseTask().runTaskTimer(UHCMeetup.getInstance(), 20L, 20L);

@@ -10,6 +10,7 @@ import mitw.meetup.scenarios.Scenario;
 import mitw.meetup.task.GameTask;
 import mitw.meetup.task.PVPBorderTask;
 import mitw.meetup.task.ReleaseTask;
+import mitw.meetup.task.SuddenDeathTask;
 import mitw.meetup.util.CStringBuffer;
 import mitw.meetup.util.Util;
 import net.development.mitw.utils.StringUtil;
@@ -45,6 +46,18 @@ public class UHCMeetupAdapter implements BoardAdapter {
                 if (UHCMeetup.getInstance().getGameManager().getProfile(player.getUniqueId()).isNoClean()) {
 
                     lines.add(this.placeholder(player, UHCMeetup.getInstance().getLanguage().translate(player, "noClean")));
+
+                } else {
+
+                    continue;
+
+                }
+
+            } else if (line.equals("<suddenDeath>")) {
+
+                if (SuddenDeathTask.isTimerStarted()) {
+
+                    lines.add(UHCMeetup.getInstance().getLanguage().translate(player, "sudden_death") + ": §6" + Util.getTimeHora(SuddenDeathTask.getCountdown()));
 
                 } else {
 

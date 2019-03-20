@@ -59,6 +59,11 @@ public class ScenarioMenu extends Menu {
 
                 if (lore.equals("<description>")) {
 
+                    for (String desc : UHCMeetup.getInstance().getLanguage().translateArrays(player, "description_" + scenario.name().toLowerCase())) {
+
+                        lores.add(desc);
+
+                    }
                     continue;
 
                 }
@@ -74,6 +79,12 @@ public class ScenarioMenu extends Menu {
 
         @Override
         public void clicked(Player player, int slot, ClickType clickType, int hotbarButton) {
+
+            if (scenario.getVotes() > 2) {
+                player.sendMessage(UHCMeetup.getInstance().getLanguage().translate(player, "scenario_vote_full"));
+                return;
+            }
+
             PlayerProfile profile = UHCMeetup.getInstance().getGameManager().getProfile(player.getUniqueId());
 
             if (profile.getVoted() != null) {

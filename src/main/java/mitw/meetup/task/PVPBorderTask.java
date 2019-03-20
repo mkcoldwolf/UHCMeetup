@@ -30,12 +30,15 @@ public class PVPBorderTask extends BukkitRunnable {
         if (sec == 0) {
             int s = list.remove(0);
             for (Player p : Bukkit.getOnlinePlayers()) {
-                p.sendMessage(UHCMeetup.getInstance().getLanguage().translate(p, "Shirnk").replace("<border>", s + ""));
+                if (UHCMeetup.getInstance().getGameManager().getProfile(p.getUniqueId()).isAlive())
+                    p.sendMessage(UHCMeetup.getInstance().getLanguage().translate(p, "Shirnk").replace("<border>", s + ""));
             }
             UHCMeetup.getInstance().getGameManager().setBorder(s);
             new BorderBuilder(Bukkit.getWorld("world"), s, 4).start(true);
             if (list.isEmpty()) {
                 cancel();
+//                new SuddenDeathTask();
+                return;
             }
             sec = 120;
         } else if (sec == 60 || sec == 30 || sec == 15 || sec == 10 || sec <= 5 && sec > 0) {

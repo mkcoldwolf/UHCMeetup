@@ -121,6 +121,11 @@ public class Board {
 					t = teams.get(team.id);
 				}
 				for (final UUID uuid : team.members) {
+
+					if (!UHCMeetup.getInstance().getGameManager().getProfile(uuid).isAlive()) {
+						continue;
+					}
+
 					t.addEntry(UUIDCache.getName(uuid));
 				}
 			}
@@ -128,13 +133,19 @@ public class Board {
 
 			if (!spectating) {
 
-				final Team team1 = scoreboard.registerNewTeam("1team");
+				Team team1 = scoreboard.getTeam("1team");
+				if (team1 == null) {
+					team1 = scoreboard.registerNewTeam("1team");
+				}
 				team1.setPrefix(ChatColor.GREEN.toString());
 				team1.addEntry(UUIDCache.getName(uuid));
 
 			}
 
-			final Team team2 = scoreboard.registerNewTeam("2team");
+			Team team2 = scoreboard.getTeam("2team");
+			if (team2 == null) {
+				team2 = scoreboard.registerNewTeam("2team");
+			}
 			team2.setPrefix(ChatColor.RED.toString());
 
 			for (final Player player : Bukkit.getOnlinePlayers()) {

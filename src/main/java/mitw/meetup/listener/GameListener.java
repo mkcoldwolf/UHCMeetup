@@ -105,7 +105,7 @@ public class GameListener implements Listener {
 		if (GameStatus.is(GameStatus.TELEPORT))
 			return;
 
-		if (plugin.getGameManager().spectators.contains(e.getPlayer().getUniqueId()) || !GameStatus.is(GameStatus.PVP)) {
+		if (plugin.getGameManager().spectators.contains(e.getPlayer().getUniqueId()) || GameStatus.is(GameStatus.WAITING)) {
 			e.setCancelled(true);
 		} else
 			return;
@@ -116,7 +116,7 @@ public class GameListener implements Listener {
 
 		if (e.getItem().getType() == Material.PAINTING) {
 
-			p.performCommand("MitwMeetup:vote");
+			p.chat("/vote");
 
 		} else if (e.getItem().getType() == Material.SLIME_BALL) {
 
@@ -145,7 +145,7 @@ public class GameListener implements Listener {
 			using.add(p.getUniqueId());
 			Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, () -> using.remove(p.getUniqueId()), 60l);
 		} else if (e.getItem().getType() == Material.GOLD_SWORD) {
-			p.performCommand("team");
+			p.chat("/team");
 			if (using.contains(p.getUniqueId())) {
 				p.sendMessage(plugin.getLanguage().translate(p, "wait"));
 				return;
@@ -301,7 +301,7 @@ public class GameListener implements Listener {
 
 			final PlayerProfile kp = plugin.getGameManager().getProfile(k.getUniqueId());
 
-			if (profile != null && kp.getTeam() != null && profile.equals(kp.getTeam())
+			if (kp.getTeam() != null && profile.getTeam().equals(kp.getTeam())
 					&& (e.getDamager() instanceof Player || e.getDamager() instanceof Arrow)) {
 
 				e.setCancelled(true);
