@@ -34,6 +34,12 @@ public class DeathListener implements Listener {
 		//死亡數增加1
 		profile.addDeaths();
 
+		if (profile.getElo() > 1200) {
+            final int ratingRemove = UHCMeetup.getRandom().nextInt(5, 9);
+            plugin.getLanguage().send(p, "rating_remove", RV.o("{0}", ratingRemove + ""));
+            profile.setElo(profile.getElo() - ratingRemove);
+        }
+
 		p.setHealth(20.0);
 
 		plugin.getGameManager().players.remove(p.getUniqueId());
@@ -64,6 +70,11 @@ public class DeathListener implements Listener {
 			if (plugin.getGameManager().debugModePlayers.containsKey(killer.getUniqueId()) && plugin.getGameManager().debugModePlayers.get(killer.getUniqueId())) {
 				new DebugTask(killer).runTaskTimerAsynchronously(plugin, 0L, 20L);
 			}
+			//增加積分
+            PlayerProfile killerProfile = plugin.getGameManager().getProfile(killer.getUniqueId());
+			final int ratingAdded = UHCMeetup.getRandom().nextInt(4, 6);
+			killerProfile.setElo(killerProfile.getElo() + ratingAdded);
+			plugin.getLanguage().send(killer, "rating_add", RV.o("{0}", ratingAdded + ""));
 		}
 
 		final PlayerProfile killerProfile = plugin.getGameManager().getProfile(killer.getUniqueId());

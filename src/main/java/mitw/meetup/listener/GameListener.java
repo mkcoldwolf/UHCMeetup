@@ -9,6 +9,7 @@ import java.util.UUID;
 import mitw.meetup.Lang;
 import mitw.meetup.UHCMeetup;
 import mitw.meetup.gui.SimpleInventorySnapshot;
+import mitw.meetup.gui.StatsGUI;
 import mitw.meetup.player.PlayerProfile;
 import mitw.meetup.scenarios.Scenario;
 import org.bukkit.Bukkit;
@@ -169,6 +170,14 @@ public class GameListener implements Listener {
 			using.add(p.getUniqueId());
 			plugin.getPlayerManager().setPlayerDBMode(p);
 			Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, () -> using.remove(p.getUniqueId()), 60l);
+		} else if (e.getItem().getType() == Material.SIGN) {
+            if (using.contains(p.getUniqueId())) {
+                p.sendMessage(plugin.getLanguage().translate(p, "wait"));
+                return;
+            }
+            using.add(p.getUniqueId());
+            new StatsGUI().openMenu(p);
+            Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, () -> using.remove(p.getUniqueId()), 60l);
 		}
 	}
 

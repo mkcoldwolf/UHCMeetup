@@ -9,9 +9,10 @@ import lombok.Getter;
 import mitw.meetup.board.BoardManager;
 import mitw.meetup.board.adapter.UHCMeetupAdapter;
 import mitw.meetup.impl.NocleanTimer;
-import mitw.meetup.manager.PlayerManager;
+import mitw.meetup.manager.*;
 import mitw.meetup.util.UHCMeetupDatabase;
 import net.development.mitw.commands.CommandHandler;
+import net.development.mitw.utils.FastRandom;
 import org.bukkit.Material;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -23,9 +24,6 @@ import mitw.meetup.listener.DeathListener;
 import mitw.meetup.listener.GameListener;
 import mitw.meetup.listener.JoinListener;
 import mitw.meetup.listener.QuitListener;
-import mitw.meetup.manager.ArenaManager;
-import mitw.meetup.manager.GameManager;
-import mitw.meetup.manager.KitManager;
 import net.development.mitw.Mitw;
 import net.development.mitw.language.LanguageAPI;
 
@@ -48,7 +46,10 @@ public class UHCMeetup extends JavaPlugin {
 	private BoardManager sidebarManager;
 
 	@Getter
-	private UHCMeetupDatabase database;
+	private LeaderboardManager leaderboardManager;
+
+	@Getter
+	private static FastRandom random = new FastRandom();
 
 	@Override
 	public void onEnable() {
@@ -83,7 +84,7 @@ public class UHCMeetup extends JavaPlugin {
 
 		Mitw.getInstance().getTimerManager().registerTimer(new NocleanTimer());
 
-		this.database = new UHCMeetupDatabase();
+		this.leaderboardManager = new LeaderboardManager();
 
 	}
 

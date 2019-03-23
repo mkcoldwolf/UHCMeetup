@@ -45,6 +45,10 @@ public class QuitListener implements Listener {
 		plugin.getGameManager().spectators.remove(e.getPlayer().getUniqueId());
 
         final PlayerProfile player = plugin.getGameManager().getProfile(e.getPlayer().getUniqueId());
+        //退出扣除積分
+        if (GameStatus.is(GameStatus.PVP) && plugin.getGameManager().players.contains(p.getUniqueId())) {
+            player.setElo(player.getElo() - 10);
+        }
         player.save();
         plugin.getGameManager().profiles.remove(e.getPlayer().getUniqueId());
 

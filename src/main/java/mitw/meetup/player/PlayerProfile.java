@@ -1,5 +1,6 @@
 package mitw.meetup.player;
 
+import java.text.DecimalFormat;
 import java.util.UUID;
 
 import lombok.Getter;
@@ -132,8 +133,12 @@ public class PlayerProfile extends PlayerInfo {
 	    this.elo = elo;
     }
 
+    public String getKDR() {
+        return new DecimalFormat("0.0").format(deaths == 0 ? (double) kills : ((double)kills / deaths));
+    }
+
     public void load() {
-        UHCMeetupDatabase database = UHCMeetup.getInstance().getDatabase();
+        UHCMeetupDatabase database = UHCMeetup.getInstance().getLeaderboardManager().getDatabase();
 
         if (this.hasData(database)) {
             database.getTable().executeSelect("uuid = ?")
@@ -158,7 +163,7 @@ public class PlayerProfile extends PlayerInfo {
     }
 
 	public void save() {
-		UHCMeetupDatabase database = UHCMeetup.getInstance().getDatabase();
+        UHCMeetupDatabase database = UHCMeetup.getInstance().getLeaderboardManager().getDatabase();
 		if (this.hasData(database)) {
 			database.getTable().executeUpdate("UPDATE `uhcmeetup_player` SET " +
 					"`name` = ?, " +

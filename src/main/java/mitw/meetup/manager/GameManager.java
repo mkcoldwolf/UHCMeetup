@@ -82,6 +82,7 @@ public class GameManager {
 				if (UHCMeetup.TeamMode) {
 					p.getInventory().setItem(1, new ItemBuilder(Material.GOLD_SWORD).name(UHCMeetup.getInstance().getLanguage().translate(p, "teamchoose")).build());
 				}
+				p.getInventory().setItem(4, new ItemBuilder(Material.SIGN).name(UHCMeetup.getInstance().getLanguage().translate(p, "stats")).build());
 				p.updateInventory();
 			}
 		}.runTaskLater(UHCMeetup.getInstance(), 5L);

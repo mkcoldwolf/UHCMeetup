@@ -87,6 +87,8 @@ public class Lang {
 	public String zh_tw_dbmodeon = "&fCleanup紀錄模式 &f- &aON";
 	public String zh_tw_dbmodeoff = "&fCleanup紀錄模式 &f- &cOFF";
 	public String zh_tw_wait = "&c冷卻中...";
+    public String zh_tw_rating_add = "&6積分 +{0}!";
+    public String zh_tw_rating_remove = "&6積分 +{0}!";
 
 	public String zh_tw_team_gui_title = "§e選擇隊伍!";
 	public String en_us_team_gui_title = "§eChoose Team!";
@@ -166,7 +168,39 @@ public class Lang {
 	public List<String> en_us_vote_nonFull = Arrays.asList("&7&m----------------------", "<description>", " ", "&eVotes: <votes>", "&7&m----------------------");
 	public List<String> en_us_vote_full = Arrays.asList("&7&m----------------------", "<description>", " ", "&c&lFull", "&7&m----------------------");
 
-	public List<String> zh_tw_LobbyList = Arrays.asList(
+	//玩家紀錄將會用到的 (StatsGUI)
+    public String zh_tw_wins = "勝利次數: &6";
+    public String en_us_wins = "Wins: &6";
+
+    public String zh_tw_kills = "擊殺次數: &6";
+    public String en_us_kills = "Kills: &6";
+
+    public String zh_tw_deaths = "死亡次數: &6";
+    public String en_us_deaths = "Deaths: &6";
+
+    public String zh_tw_elo = "積分: &6";
+    public String en_us_elo = "Rating: &6";
+
+    public String zh_tw_elo_ranking = "積分排名: &6";
+    public String en_us_elo_ranking = "Ranking: &6";
+
+    public String zh_tw_leaderboard = "&e點擊查看排行榜";
+    public String en_us_leaderboard = "&eClick to see the leaderboard";
+
+    //排行榜將會用到的 (LeaderboardGUI)
+    public String zh_tw_leaderboard_title = "&6排&e行&f榜";
+    public String en_us_leaderboard_title = "&6Leader&fBoard";
+
+    public String zh_tw_leaderboard_rating = "&b積分";
+    public String en_us_leaderboard_rating = "&bRating";
+
+    public String zh_tw_leaderboard_wins = "&6勝利次數";
+    public String en_us_leaderboard_wins = "&6Wins";
+
+    public String zh_tw_leaderboard_kills = "&f擊殺次數";
+    public String en_us_leaderboard_kills = "&fKills";
+
+    public List<String> zh_tw_LobbyList = Arrays.asList(
 			"&7&m---------------------------",
 			"&f人數: &6<players>",
 			"&f伺服器: &e<server>",
@@ -293,6 +327,8 @@ public class Lang {
 	public String en_us_dbmodeon = "&fCleanup debug mode &f- &aON";
 	public String en_us_dbmodeoff = "&fCleanup debug mode &f- &cOFF";
 	public String en_us_wait = "&cCooldown...";
+    public String en_us_rating_add = "&6Rating +{0}!";
+    public String en_us_rating_remove = "&6Rating +{0}!";
 
 	public List<String> en_us_LobbyList = Arrays.asList(
 			"&7&m---------------------------",
