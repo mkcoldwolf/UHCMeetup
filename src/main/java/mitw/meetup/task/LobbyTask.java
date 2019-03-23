@@ -1,6 +1,7 @@
 package mitw.meetup.task;
 
 import mitw.meetup.UHCMeetup;
+import mitw.meetup.player.PlayerProfile;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -35,11 +36,12 @@ public class LobbyTask extends BukkitRunnable {
 			GameStatus.set(GameStatus.TELEPORT);
 
 			for (Player player : Bukkit.getOnlinePlayers()) {
-
+				PlayerProfile profile = UHCMeetup.getInstance().getGameManager().getProfile(player.getUniqueId());
+				//遊玩次數增加1
+				profile.addGamesPlayed();
 				if (player.getOpenInventory() != null) {
 					player.closeInventory();
 				}
-
 			}
 
 			start = false;

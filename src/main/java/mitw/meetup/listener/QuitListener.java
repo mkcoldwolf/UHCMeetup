@@ -43,7 +43,10 @@ public class QuitListener implements Listener {
 			}
 		}
 		plugin.getGameManager().spectators.remove(e.getPlayer().getUniqueId());
-		final PlayerProfile player = plugin.getGameManager().profiles.remove(e.getPlayer().getUniqueId());
+
+        final PlayerProfile player = plugin.getGameManager().getProfile(e.getPlayer().getUniqueId());
+        player.save();
+        plugin.getGameManager().profiles.remove(e.getPlayer().getUniqueId());
 
 		if (player.getVoted() != null) {
 			player.getVoted().setVotes(player.getVoted().getVotes() - 1);

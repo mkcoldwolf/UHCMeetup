@@ -31,6 +31,9 @@ public class DeathListener implements Listener {
 		final Player p = e.getEntity();
 		final PlayerProfile profile = plugin.getGameManager().getProfile(p.getUniqueId());
 
+		//死亡數增加1
+		profile.addDeaths();
+
 		p.setHealth(20.0);
 
 		plugin.getGameManager().players.remove(p.getUniqueId());
@@ -65,7 +68,9 @@ public class DeathListener implements Listener {
 
 		final PlayerProfile killerProfile = plugin.getGameManager().getProfile(killer.getUniqueId());
 
+		//擊殺數增加1
 		killerProfile.addKills();
+		killerProfile.addGlobalKills();
 		if (UHCMeetup.TeamMode) {
 			killerProfile.getTeam().kills++;
 		}

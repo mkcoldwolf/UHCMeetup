@@ -35,6 +35,7 @@ public class JoinListener implements Listener {
 
 		final PlayerProfile uHCPlayerProfile = new PlayerProfile(p);
 		plugin.getGameManager().profiles.put(p.getUniqueId(), uHCPlayerProfile);
+		uHCPlayerProfile.load();
 
 		switch (GameStatus.get()) {
 		case LOADING:

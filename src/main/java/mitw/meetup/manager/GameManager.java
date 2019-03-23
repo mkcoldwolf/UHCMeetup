@@ -164,6 +164,10 @@ public class GameManager {
 				for (final UUID uuid : win.members) {
 					final Player player = Bukkit.getPlayer(uuid);
 					new FireworkTask(player).runTaskTimer(UHCMeetup.getInstance(), 10L, 20L);
+
+                    //勝利次數增加1
+                    PlayerProfile profile = UHCMeetup.getInstance().getGameManager().getProfile(uuid);
+                    profile.addWins();
 				}
 				SoundUtil.PlaySoundAll(Sound.WITHER_DEATH);
 
@@ -185,6 +189,10 @@ public class GameManager {
 			final Player winner = Bukkit.getPlayer(players.get(0));
 			new FireworkTask(winner).runTaskTimer(UHCMeetup.getInstance(), 10L, 20L);
 			SoundUtil.PlaySoundAll(Sound.WITHER_DEATH);
+
+            //勝利次數增加1
+            PlayerProfile profile = getProfile(winner.getUniqueId());
+			profile.addWins();
 
 			GameStatus.set(GameStatus.FINISH);
 

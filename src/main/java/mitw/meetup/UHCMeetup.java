@@ -10,6 +10,7 @@ import mitw.meetup.board.BoardManager;
 import mitw.meetup.board.adapter.UHCMeetupAdapter;
 import mitw.meetup.impl.NocleanTimer;
 import mitw.meetup.manager.PlayerManager;
+import mitw.meetup.util.UHCMeetupDatabase;
 import net.development.mitw.commands.CommandHandler;
 import org.bukkit.Material;
 import org.bukkit.plugin.PluginManager;
@@ -46,6 +47,9 @@ public class UHCMeetup extends JavaPlugin {
 	@Getter
 	private BoardManager sidebarManager;
 
+	@Getter
+	private UHCMeetupDatabase database;
+
 	@Override
 	public void onEnable() {
 
@@ -78,6 +82,8 @@ public class UHCMeetup extends JavaPlugin {
 		CommandHandler.loadCommandsFromPackage(this, "mitw.meetup.commands");
 
 		Mitw.getInstance().getTimerManager().registerTimer(new NocleanTimer());
+
+		this.database = new UHCMeetupDatabase();
 
 	}
 
