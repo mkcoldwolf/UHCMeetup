@@ -49,7 +49,7 @@ public class LeaderboardManager {
         AsyncUtils.runAsync(() -> {
             {
                 final Map<String, Integer> ratingTop = new HashMap<>();
-                database.getTable().executeQuery("SELECT uuid, elo from " + database.getDatabase() + " order by wins desc limit 10")
+                database.getTable().executeQuery("SELECT uuid, elo from " + database.getDatabase() + " order by elo desc limit 10")
                         .dataSource(database.getDatabase().getDataSource())
                         .result(r -> {
                             if (r.isBeforeFirst()) {
