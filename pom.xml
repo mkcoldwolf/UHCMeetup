@@ -9,11 +9,10 @@
     <dependencies>
 
         <dependency>
-            <groupId>top.potl.spigot</groupId>
+            <groupId>top.potl</groupId>
             <artifactId>nspigot</artifactId>
-            <version>1.8.8-R0.1-SNAPSHOT</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/nspigot-2.0E.jar</systemPath>
+            <version>2.0E</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>

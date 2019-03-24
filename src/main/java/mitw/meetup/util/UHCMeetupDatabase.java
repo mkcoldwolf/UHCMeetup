@@ -14,12 +14,12 @@ public class UHCMeetupDatabase {
     private SQLTable table;
 
     public UHCMeetupDatabase() {
-        database = new Database(Mitw.getInstance(), "uhcmeetup");
+        database = Mitw.getInstance().getLanguageData().getConn().getDatabase();
         this.createTables();
     }
 
     private void createTables() {
-        table = new SQLTable("uhcmeetup_player")
+        table = new SQLTable("meetup_player")
                 .addColumn(new SQLColumn(SQLColumnType.TEXT, "uuid"))
                 .addColumn(new SQLColumn(SQLColumnType.TEXT, "name"))
                 .addColumn(new SQLColumn(SQLColumnType.INT, "global_kills"))

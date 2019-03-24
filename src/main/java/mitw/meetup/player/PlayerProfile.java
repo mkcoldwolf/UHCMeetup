@@ -41,6 +41,7 @@ public class PlayerProfile extends PlayerInfo {
         this.player = p.getUniqueId();
 		this.isNoClean = false;
 		this.kills = 0;
+		this.elo = 1000;
 		this.isAlive = true;
 	}
 
@@ -165,7 +166,7 @@ public class PlayerProfile extends PlayerInfo {
 	public void save() {
         UHCMeetupDatabase database = UHCMeetup.getInstance().getLeaderboardManager().getDatabase();
 		if (this.hasData(database)) {
-			database.getTable().executeUpdate("UPDATE `uhcmeetup_player` SET " +
+			database.getTable().executeUpdate("UPDATE `meetup_player` SET " +
 					"`name` = ?, " +
 					"`global_kills` = ?, " +
 					"`wins` = ?, " +

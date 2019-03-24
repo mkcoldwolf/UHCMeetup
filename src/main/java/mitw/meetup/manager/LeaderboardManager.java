@@ -3,7 +3,7 @@ package mitw.meetup.manager;
 import lombok.Getter;
 import mitw.meetup.UHCMeetup;
 import mitw.meetup.util.UHCMeetupDatabase;
-import net.development.mitw.utils.AsyncUtils;
+import org.bukkit.Bukkit;
 
 import java.sql.SQLException;
 import java.util.Comparator;
@@ -46,10 +46,10 @@ public class LeaderboardManager {
     }
 
     public void updateTops() {
-        AsyncUtils.runAsync(() -> {
+        Bukkit.getScheduler().runTaskAsynchronously(UHCMeetup.getInstance(), () -> {
             {
                 final Map<String, Integer> ratingTop = new HashMap<>();
-                database.getTable().executeQuery("SELECT uuid, elo from " + database.getDatabase() + " order by elo desc limit 10")
+                database.getTable().executeQuery("SELECT uuid, elo from meetup_player order by elo desc limit 10")
                         .dataSource(database.getDatabase().getDataSource())
                         .result(r -> {
                             if (r.isBeforeFirst()) {
@@ -74,7 +74,7 @@ public class LeaderboardManager {
             }
             {
                 final Map<String, Integer> top = new HashMap<>();
-                database.getTable().executeQuery("SELECT uuid, wins from " + database.getDatabase() + " order by wins desc limit 10")
+                database.getTable().executeQuery("SELECT uuid, wins from meetup_player order by wins desc limit 10")
                         .dataSource(database.getDatabase().getDataSource())
                         .result(r -> {
                             if (r.isBeforeFirst()) {
@@ -99,7 +99,7 @@ public class LeaderboardManager {
             }
             {
                 final Map<String, Integer> top = new HashMap<>();
-                database.getTable().executeQuery("SELECT uuid, kills from " + database.getDatabase() + " order by kills desc limit 10")
+                database.getTable().executeQuery("SELECT uuid, global_kills from meetup_player order by global_kills desc limit 10")
                         .dataSource(database.getDatabase().getDataSource())
                         .result(r -> {
                             if (r.isBeforeFirst()) {
@@ -107,7 +107,7 @@ public class LeaderboardManager {
                                     try {
                                         final String name = r.getString("uuid");
                                         if (name != null && !top.containsKey(name)) {
-                                            top.put(name, r.getInt("kills"));
+                                            top.put(name, r.getInt("global_kills"));
                                         }
                                     } catch (final SQLException e) {
                                         if (e.getMessage() != null && !e.getMessage().contains("empty result")) {
@@ -124,7 +124,7 @@ public class LeaderboardManager {
             }
             {
                 final Map<String, Double> top = new HashMap<>();
-                database.getTable().executeQuery("SELECT uuid, kills, deaths from " + database.getDatabase() + "")
+                database.getTable().executeQuery("SELECT uuid, global_kills, deaths from meetup_player")
                         .dataSource(database.getDatabase().getDataSource())
                         .result(r -> {
                             if (r.isBeforeFirst()) {
@@ -132,7 +132,7 @@ public class LeaderboardManager {
                                     try {
                                         final String name = r.getString("uuid");
                                         if (name != null && !top.containsKey(name)) {
-                                            final int deaths = r.getInt("deaths"), kills = r.getInt("kills");
+                                            final int deaths = r.getInt("deaths"), kills = r.getInt("global_kills");
 
                                             top.put(name, ((double) deaths == 0 ? (double) kills : ((double) kills / deaths)));
                                         }
