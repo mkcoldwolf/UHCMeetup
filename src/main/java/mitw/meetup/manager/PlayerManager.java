@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import mitw.meetup.Lang;
 import mitw.meetup.UHCMeetup;
 import mitw.meetup.board.Board;
+import mitw.meetup.player.PlayerProfile;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -76,12 +77,13 @@ public class PlayerManager {
 
 	public void setPlayerDBMode(final Player p) {
 		final UUID u = p.getUniqueId();
-		if (plugin.getGameManager().debugModePlayers.containsKey(u) && plugin.getGameManager().debugModePlayers.get(u) == true) {
-			plugin.getGameManager().debugModePlayers.put(u, false);
+		PlayerProfile playerProfile = plugin.getGameManager().getProfile(u);
+		if (playerProfile.isDebug()) {
+			playerProfile.setDebug(false);
 			p.sendMessage(Util.colored(Lang.PREFIX + plugin.getInstance().getLanguage().translate(p, "cleandb_off")));
 			p.getInventory().setItem(7, new ItemBuilder(Material.INK_SACK).durability(8).name(plugin.getInstance().getLanguage().translate(p, "dbmodeoff")).build());
 		} else {
-			plugin.getGameManager().debugModePlayers.put(u, true);
+			playerProfile.setDebug(true);
 			p.sendMessage(Util.colored(Lang.PREFIX + plugin.getInstance().getLanguage().translate(p, "cleandb_on")));
 			p.getInventory().setItem(7, new ItemBuilder(Material.INK_SACK).durability(10).name(plugin.getInstance().getLanguage().translate(p, "dbmodeon")).build());
 		}

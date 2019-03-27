@@ -49,13 +49,13 @@ public class LeaderboardManager {
         Bukkit.getScheduler().runTaskAsynchronously(UHCMeetup.getInstance(), () -> {
             {
                 final Map<String, Integer> ratingTop = new HashMap<>();
-                database.getTable().executeQuery("SELECT uuid, elo from meetup_player order by elo desc limit 10")
+                database.getTable().executeQuery("SELECT name, elo from meetup_player order by elo desc limit 10")
                         .dataSource(database.getDatabase().getDataSource())
                         .result(r -> {
                             if (r.isBeforeFirst()) {
                                 while (r.next()) {
                                     try {
-                                        final String name = r.getString("uuid");
+                                        final String name = r.getString("name");
                                         if (name != null && !ratingTop.containsKey(name)) {
                                             ratingTop.put(name, r.getInt("elo"));
                                         }
@@ -74,13 +74,13 @@ public class LeaderboardManager {
             }
             {
                 final Map<String, Integer> top = new HashMap<>();
-                database.getTable().executeQuery("SELECT uuid, wins from meetup_player order by wins desc limit 10")
+                database.getTable().executeQuery("SELECT name, wins from meetup_player order by wins desc limit 10")
                         .dataSource(database.getDatabase().getDataSource())
                         .result(r -> {
                             if (r.isBeforeFirst()) {
                                 while (r.next()) {
                                     try {
-                                        final String name = r.getString("uuid");
+                                        final String name = r.getString("name");
                                         if (name != null && !top.containsKey(name)) {
                                             top.put(name, r.getInt("wins"));
                                         }
@@ -99,13 +99,13 @@ public class LeaderboardManager {
             }
             {
                 final Map<String, Integer> top = new HashMap<>();
-                database.getTable().executeQuery("SELECT uuid, global_kills from meetup_player order by global_kills desc limit 10")
+                database.getTable().executeQuery("SELECT name, global_kills from meetup_player order by global_kills desc limit 10")
                         .dataSource(database.getDatabase().getDataSource())
                         .result(r -> {
                             if (r.isBeforeFirst()) {
                                 while (r.next()) {
                                     try {
-                                        final String name = r.getString("uuid");
+                                        final String name = r.getString("name");
                                         if (name != null && !top.containsKey(name)) {
                                             top.put(name, r.getInt("global_kills"));
                                         }
@@ -124,13 +124,13 @@ public class LeaderboardManager {
             }
             {
                 final Map<String, Double> top = new HashMap<>();
-                database.getTable().executeQuery("SELECT uuid, global_kills, deaths from meetup_player")
+                database.getTable().executeQuery("SELECT name, global_kills, deaths from meetup_player")
                         .dataSource(database.getDatabase().getDataSource())
                         .result(r -> {
                             if (r.isBeforeFirst()) {
                                 while (r.next()) {
                                     try {
-                                        final String name = r.getString("uuid");
+                                        final String name = r.getString("name");
                                         if (name != null && !top.containsKey(name)) {
                                             final int deaths = r.getInt("deaths"), kills = r.getInt("global_kills");
 

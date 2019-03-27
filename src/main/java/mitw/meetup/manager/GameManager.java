@@ -27,7 +27,6 @@ public class GameManager {
 
 	public List<UUID> players = new ArrayList<>();
 	public List<UUID> spectators = new ArrayList<>();
-	public Map<UUID, Boolean> debugModePlayers = new HashMap<>();
 	public int max;
 	private static int border;
 	public static Boolean isInDown = false;
@@ -75,9 +74,9 @@ public class GameManager {
 			public void run() {
 				p.getInventory().setItem(0, new ItemBuilder(Material.PAINTING).name(UHCMeetup.getInstance().getLanguage().translate(p, "vote")).build());
 				p.getInventory().setItem(7,
-						(debugModePlayers.containsKey(p.getUniqueId()) && debugModePlayers.get(p.getUniqueId()) == true) ?
+						(getProfile(p.getUniqueId()).isDebug() ?
 								new ItemBuilder(Material.INK_SACK).durability(10).name(UHCMeetup.getInstance().getLanguage().translate(p, "dbmodeon")).build()
-								: new ItemBuilder(Material.INK_SACK).durability(8).name(UHCMeetup.getInstance().getLanguage().translate(p, "dbmodeoff")).build());
+								: new ItemBuilder(Material.INK_SACK).durability(8).name(UHCMeetup.getInstance().getLanguage().translate(p, "dbmodeoff")).build()));
 				p.getInventory().setItem(8, new ItemBuilder(Material.BED).name(UHCMeetup.getInstance().getLanguage().translate(p, "spec2")).build());
 				if (UHCMeetup.TeamMode) {
 					p.getInventory().setItem(1, new ItemBuilder(Material.GOLD_SWORD).name(UHCMeetup.getInstance().getLanguage().translate(p, "teamchoose")).build());

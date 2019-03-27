@@ -26,7 +26,8 @@ public class UHCMeetupDatabase {
                 .addColumn(new SQLColumn(SQLColumnType.INT, "wins"))
                 .addColumn(new SQLColumn(SQLColumnType.INT, "deaths"))
                 .addColumn(new SQLColumn(SQLColumnType.INT, "games_played"))
-                .addColumn(new SQLColumn(SQLColumnType.INT, "elo"));
+                .addColumn(new SQLColumn(SQLColumnType.INT, "elo"))
+                .addColumn(new SQLColumn(SQLColumnType.INT, "debug"));
         table.executeUpdate(table.createQuery()).dataSource(database.getDataSource()).run();
     }
 

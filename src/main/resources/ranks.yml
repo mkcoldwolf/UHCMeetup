@@ -1,0 +1,48 @@
+none:
+  name: none
+  min: 0
+  max: 1199
+  displayname:
+    zh_tw: "&7"
+    en_us: "&7"
+    icon: "&7"
+bronze:
+  name: bronze
+  min: 1200
+  max: 1499
+  displayname:
+    zh_tw: "&8»É"
+    en_us: "&8Bronze"
+    icon: "&8¡´"
+silver:
+  name: silver
+  min: 1500
+  max: 1799
+  displayname:
+    zh_tw: "&f»È"
+    en_us: "&fSilver"
+    icon: "&f¡¶"
+gold:
+  name: gold
+  min: 1800
+  max: 2999
+  displayname:
+    zh_tw: "&6ª÷"
+    en_us: "&6Gold"
+    icon: "&6¡»"
+diamond:
+  name: diamond
+  min: 3000
+  max: 4999
+  displayname:
+    zh_tw: "&bÆp"
+    en_us: "&bDiamond"
+    icon: "&b¡·"
+legend:
+  name: legend
+  min: 5000
+  max: noLimit
+  displayname:
+    zh_tw: "&4¶Ç»¡"
+    en_us: "&4Legend"
+    icon: "&4£["

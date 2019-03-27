@@ -2,9 +2,12 @@ package mitw.meetup.gui;
 
 import lombok.RequiredArgsConstructor;
 import mitw.meetup.UHCMeetup;
+import mitw.meetup.player.Rank;
 import net.development.mitw.menu.Button;
 import net.development.mitw.menu.Menu;
+import net.development.mitw.utils.FastUUID;
 import net.development.mitw.utils.ItemBuilder;
+import net.development.mitw.uuid.UUIDCache;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -44,7 +47,7 @@ public class LeaderboardGUI extends Menu {
                 if (i > 10) {
                     break;
                 }
-                rating.lore("§e" + i + ") " + Bukkit.getPlayer(UUID.fromString(name)).getName() + " §7- §6" + top.get(name));
+                rating.lore("§e" + i + ") " + name + " §7- " + Rank.getRank(top.get(name)) + top.get(name));
                 i++;
             }
             return rating.build();
@@ -61,7 +64,7 @@ public class LeaderboardGUI extends Menu {
                 if (i > 10) {
                     break;
                 }
-                rating.lore("§e" + i + ") " + Bukkit.getPlayer(UUID.fromString(name)).getName() + " §7- §6" + top.get(name));
+                rating.lore("§e" + i + ") " + name + " §7- §6" + top.get(name));
                 i++;
             }
             return rating.build();
@@ -78,7 +81,7 @@ public class LeaderboardGUI extends Menu {
                 if (i > 10) {
                     break;
                 }
-                rating.lore("§e" + i + ") " + Bukkit.getPlayer(UUID.fromString(name)).getName() + " §7- §6" + top.get(name));
+                rating.lore("§e" + i + ") " + name + " §7- §6" + top.get(name));
                 i++;
             }
             return rating.build();
@@ -95,7 +98,7 @@ public class LeaderboardGUI extends Menu {
                 if (i > 10) {
                     break;
                 }
-                rating.lore("§e" + i + ") " + Bukkit.getPlayer(UUID.fromString(name)).getName() + " §7- §6" + top.get(name));
+                rating.lore("§e" + i + ") " + name+ " §7- §6" + top.get(name));
                 i++;
             }
             return rating.build();

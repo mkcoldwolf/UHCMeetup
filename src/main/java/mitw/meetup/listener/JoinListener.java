@@ -41,9 +41,6 @@ public class JoinListener implements Listener {
 		case LOADING:
 			break;
 		case WAITING:
-			if (!plugin.getGameManager().debugModePlayers.containsKey(p.getUniqueId())) {
-				plugin.getGameManager().debugModePlayers.put(p.getUniqueId(), true);
-			}
 			plugin.getGameManager().setCleanPlayerLobby(p, GameMode.SURVIVAL);
 			plugin.getGameManager().sendToLobby(p);
 			plugin.getPlayerManager().setIngame(p);

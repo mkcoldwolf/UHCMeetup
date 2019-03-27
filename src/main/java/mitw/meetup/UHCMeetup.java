@@ -10,10 +10,14 @@ import mitw.meetup.board.BoardManager;
 import mitw.meetup.board.adapter.UHCMeetupAdapter;
 import mitw.meetup.impl.NocleanTimer;
 import mitw.meetup.manager.*;
+import mitw.meetup.player.PlayerProfile;
+import mitw.meetup.player.Rank;
 import mitw.meetup.util.UHCMeetupDatabase;
 import net.development.mitw.commands.CommandHandler;
 import net.development.mitw.utils.FastRandom;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -90,17 +94,8 @@ public class UHCMeetup extends JavaPlugin {
 
 	@Override
 	public void onDisable() {
-		final ArrayList<String> temp = new ArrayList<>();
-		for (final UUID u : gameManager.debugModePlayers.keySet()) {
-			if (gameManager.debugModePlayers.get(u)) {
-				temp.add(u.toString());
-			}
-		}
-		Lang.dataConfig.set("debugmodes", temp);
-		try {
-			Lang.dataConfig.save(Lang.data);
-		} catch (final IOException e) {
-			e.printStackTrace();
+		for (Player player : Bukkit.getOnlinePlayers()) {
+			getGameManager().getProfile(player.getUniqueId()).save();
 		}
 	}
 
@@ -108,6 +103,13 @@ public class UHCMeetup extends JavaPlugin {
 		this.getConfig().options().copyDefaults();
 		this.saveDefaultConfig();
 		Lang.setupFile();
+		this.loadRanks();
+	}
+
+	private void loadRanks() {
+		for (String key : Lang.rankConfig.getKeys(false)) {
+			new Rank(Lang.rankConfig.getConfigurationSection(key));
+		}
 	}
 
 	private void registerListeners() {

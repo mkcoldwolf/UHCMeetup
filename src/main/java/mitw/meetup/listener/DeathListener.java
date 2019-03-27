@@ -67,11 +67,11 @@ public class DeathListener implements Listener {
 			plugin.getLanguage().send("death", RV.o("{0}", p.getName()), RV.o("{1}", profile.getKills() + ""));
 			return;
 		} else {
-			if (plugin.getGameManager().debugModePlayers.containsKey(killer.getUniqueId()) && plugin.getGameManager().debugModePlayers.get(killer.getUniqueId())) {
+			PlayerProfile killerProfile = plugin.getGameManager().getProfile(killer.getUniqueId());
+			if (killerProfile.isDebug()) {
 				new DebugTask(killer).runTaskTimerAsynchronously(plugin, 0L, 20L);
 			}
 			//增加積分
-            PlayerProfile killerProfile = plugin.getGameManager().getProfile(killer.getUniqueId());
 			final int ratingAdded = UHCMeetup.getRandom().nextInt(4, 6);
 			killerProfile.setElo(killerProfile.getElo() + ratingAdded);
 			plugin.getLanguage().send(killer, "rating_add", RV.o("{0}", ratingAdded + ""));

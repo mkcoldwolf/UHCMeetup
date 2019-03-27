@@ -22,6 +22,7 @@ public class PlayerProfile extends PlayerInfo {
 	private int kills;
 	private boolean isNoClean;
 	private boolean isAlive;
+	@Getter @Setter private boolean debug;
 
 	@Getter @Setter private int global_kills;
     @Getter @Setter private int deaths;
@@ -156,6 +157,7 @@ public class PlayerProfile extends PlayerInfo {
                                 setDeaths(result.getInt("deaths"));
                                 setGames_played(result.getInt("games_played"));
                                 setElo(result.getInt("elo"));
+                                setDebug(result.getInt("debug") == 1);
                             }
                         }
                         return null;
@@ -172,28 +174,31 @@ public class PlayerProfile extends PlayerInfo {
 					"`wins` = ?, " +
                     "`deaths` = ?, " +
                     "`games_played` = ?, " +
-					"`elo` = ? WHERE `uuid` = ?;")
+					"`elo` = ?, "+
+					"`debug` = ? WHERE `uuid` = ?;")
 					.dataSource(database.getDatabase().getDataSource())
 					.statement(s -> {
-						s.setString(1, this.getPlayerData().getName());
+						s.setString(1, getName());
 						s.setInt(2, this.global_kills);
 						s.setInt(3, this.wins);
 						s.setInt(4, this.deaths);
 						s.setInt(5, this.games_played);
 						s.setInt(6, this.elo);
-						s.setString(7, FastUUID.toString(getPlayer()));
+						s.setInt(7, this.debug ? 1 : 0);
+						s.setString(8, FastUUID.toString(getPlayer()));
 					}).run();
 		} else {
-			database.getTable().executeInsert("?, ?, ?, ?, ?, ?, ?")
+			database.getTable().executeInsert("?, ?, ?, ?, ?, ?, ?, ?")
 					.dataSource(database.getDatabase().getDataSource())
 					.statement(s -> {
 						s.setString(1, FastUUID.toString(getPlayer()));
-						s.setString(2, this.getPlayerData().getName());
+						s.setString(2, getName());
 						s.setInt(3, this.global_kills);
 						s.setInt(4, this.wins);
 						s.setInt(5, this.deaths);
                         s.setInt(6, this.games_played);
 						s.setInt(7, this.elo);
+						s.setInt(8, this.debug ? 1 : 0);
 					}).run();
 		}
 	}

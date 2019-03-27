@@ -9,13 +9,13 @@ import org.bukkit.configuration.file.YamlConfiguration;
 
 public class Lang {
 
-	public static File data;
-	public static YamlConfiguration dataConfig;
+	public static File rank;
+	public static YamlConfiguration rankConfig;
 
 
 	public static void setupFile() {
-		data = completeCreateFiles(data, "playerdata.yml");
-		dataConfig = YamlConfiguration.loadConfiguration(data);
+		rank = completeCreateFiles(rank, "ranks.yml");
+		rankConfig = YamlConfiguration.loadConfiguration(rank);
 	}
 
 	public static File completeCreateFiles(File file, final String name) {
