@@ -1,6 +1,5 @@
 package mitw.meetup;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -10,9 +9,7 @@ import mitw.meetup.board.BoardManager;
 import mitw.meetup.board.adapter.UHCMeetupAdapter;
 import mitw.meetup.impl.NocleanTimer;
 import mitw.meetup.manager.*;
-import mitw.meetup.player.PlayerProfile;
 import mitw.meetup.player.Rank;
-import mitw.meetup.util.UHCMeetupDatabase;
 import net.development.mitw.commands.CommandHandler;
 import net.development.mitw.utils.FastRandom;
 import org.bukkit.Bukkit;

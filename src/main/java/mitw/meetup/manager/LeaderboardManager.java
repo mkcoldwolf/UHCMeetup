@@ -2,7 +2,7 @@ package mitw.meetup.manager;
 
 import lombok.Getter;
 import mitw.meetup.UHCMeetup;
-import mitw.meetup.util.UHCMeetupDatabase;
+import mitw.meetup.player.database.UHCMeetupDatabase;
 import org.bukkit.Bukkit;
 
 import java.sql.SQLException;

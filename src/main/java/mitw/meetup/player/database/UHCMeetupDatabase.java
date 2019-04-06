@@ -1,4 +1,4 @@
-package mitw.meetup.util;
+package mitw.meetup.player.database;
 
 import lombok.Getter;
 import me.skymc.taboolib.mysql.builder.SQLColumn;
@@ -14,7 +14,7 @@ public class UHCMeetupDatabase {
     private SQLTable table;
 
     public UHCMeetupDatabase() {
-        database = Mitw.getInstance().getLanguageData().getConn().getDatabase();
+        database = new Database(Mitw.getInstance(), "meetup");
         this.createTables();
     }
 

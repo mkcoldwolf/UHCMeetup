@@ -8,7 +8,7 @@ import lombok.Setter;
 import mitw.meetup.UHCMeetup;
 import mitw.meetup.impl.NocleanTimer;
 import mitw.meetup.scenarios.Scenario;
-import mitw.meetup.util.UHCMeetupDatabase;
+import mitw.meetup.player.database.UHCMeetupDatabase;
 import net.development.mitw.player.PlayerInfo;
 import net.development.mitw.utils.FastUUID;
 import org.bukkit.Bukkit;
