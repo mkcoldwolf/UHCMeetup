@@ -38,7 +38,7 @@ public class LeaderboardManager {
     public String getRatingPosition(final String name) {
         int i = 1;
         for (final String name2 : getRatingTop().keySet()) {
-            if (name.equals(name2))
+            if (name.equalsIgnoreCase(name2))
                 return i + "";
             i++;
         }
@@ -49,7 +49,7 @@ public class LeaderboardManager {
         Bukkit.getScheduler().runTaskAsynchronously(UHCMeetup.getInstance(), () -> {
             {
                 final Map<String, Integer> ratingTop = new HashMap<>();
-                database.getTable().executeQuery("SELECT name, elo from meetup_player order by elo desc limit 10")
+                database.getTable().executeQuery("SELECT name, elo from meetup_player")
                         .dataSource(database.getDatabase().getDataSource())
                         .result(r -> {
                             if (r.isBeforeFirst()) {
@@ -70,11 +70,11 @@ public class LeaderboardManager {
                         })
                         .run();
                 this.ratingTop = ratingTop.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
-                        .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
+                        .limit(10).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
             }
             {
                 final Map<String, Integer> top = new HashMap<>();
-                database.getTable().executeQuery("SELECT name, wins from meetup_player order by wins desc limit 10")
+                database.getTable().executeQuery("SELECT name, wins from meetup_player")
                         .dataSource(database.getDatabase().getDataSource())
                         .result(r -> {
                             if (r.isBeforeFirst()) {
@@ -95,11 +95,11 @@ public class LeaderboardManager {
                         })
                         .run();
                 this.winsTop = top.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
-                        .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
+                        .limit(10).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
             }
             {
                 final Map<String, Integer> top = new HashMap<>();
-                database.getTable().executeQuery("SELECT name, global_kills from meetup_player order by global_kills desc limit 10")
+                database.getTable().executeQuery("SELECT name, global_kills from meetup_player")
                         .dataSource(database.getDatabase().getDataSource())
                         .result(r -> {
                             if (r.isBeforeFirst()) {
@@ -120,7 +120,7 @@ public class LeaderboardManager {
                         })
                         .run();
                 this.killsTop = top.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
-                        .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
+                        .limit(10).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
             }
             {
                 final Map<String, Double> top = new HashMap<>();

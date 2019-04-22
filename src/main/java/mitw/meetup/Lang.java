@@ -200,6 +200,9 @@ public class Lang {
     public String zh_tw_leaderboard_kills = "&f擊殺次數";
     public String en_us_leaderboard_kills = "&fKills";
 
+    public String zh_tw_targetNotExists = "&c目標不存在!";
+	public String en_us_targetNotExists = "&cTarget not exists!";
+
     public List<String> zh_tw_LobbyList = Arrays.asList(
 			"&7&m---------------------------",
 			"&f人數: &6<players>",

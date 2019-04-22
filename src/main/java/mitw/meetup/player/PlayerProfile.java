@@ -16,7 +16,7 @@ import org.bukkit.entity.Player;
 
 import net.development.mitw.Mitw;
 
-public class PlayerProfile extends PlayerInfo {
+public class PlayerProfile extends PlayerInfo implements IPlayerCache {
 
 	@Getter private final UUID player;
 	private int kills;
@@ -38,7 +38,7 @@ public class PlayerProfile extends PlayerInfo {
 	private int teamP = 0;
 
 	public PlayerProfile(final Player p) {
-        super(p.getUniqueId(), null);
+        super(p.getUniqueId(), p.getName());
         this.player = p.getUniqueId();
 		this.isNoClean = false;
 		this.kills = 0;
@@ -133,10 +133,6 @@ public class PlayerProfile extends PlayerInfo {
 
     public void setElo(int elo) {
 	    this.elo = elo;
-    }
-
-    public String getKDR() {
-        return new DecimalFormat("0.0").format(deaths == 0 ? (double) kills : ((double)kills / deaths));
     }
 
     public void load() {

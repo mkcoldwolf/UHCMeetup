@@ -7,6 +7,7 @@ import java.util.UUID;
 import lombok.Getter;
 import mitw.meetup.board.BoardManager;
 import mitw.meetup.board.adapter.UHCMeetupAdapter;
+import mitw.meetup.impl.MeetupChatHandler;
 import mitw.meetup.impl.NocleanTimer;
 import mitw.meetup.manager.*;
 import mitw.meetup.player.Rank;
@@ -82,6 +83,7 @@ public class UHCMeetup extends JavaPlugin {
 		VisualRunnable.init(this);
 		language = new LanguageAPI(LanguageAPI.LangType.CLASS, this, Mitw.getInstance().getLanguageData(), new Lang());
 		CommandHandler.loadCommandsFromPackage(this, "mitw.meetup.commands");
+		Mitw.getInstance().addChatHandler(new MeetupChatHandler());
 
 		Mitw.getInstance().getTimerManager().registerTimer(new NocleanTimer());
 

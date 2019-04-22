@@ -176,7 +176,8 @@ public class GameListener implements Listener {
                 return;
             }
             using.add(p.getUniqueId());
-            new StatsGUI().openMenu(p);
+            PlayerProfile playerProfile = plugin.getGameManager().getProfile(p.getUniqueId());
+            new StatsGUI(playerProfile).openMenu(p);
             Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, () -> using.remove(p.getUniqueId()), 60l);
 		}
 	}

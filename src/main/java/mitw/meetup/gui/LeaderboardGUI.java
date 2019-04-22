@@ -47,7 +47,7 @@ public class LeaderboardGUI extends Menu {
                 if (i > 10) {
                     break;
                 }
-                rating.lore("§e" + i + ") " + name + " §7- " + Rank.getRank(top.get(name)) + top.get(name));
+                rating.lore("§e" + i + ") " + name + " §7- " + Rank.getRank(top.get(name)).getIcon() + top.get(name));
                 i++;
             }
             return rating.build();
