@@ -3,7 +3,6 @@ package mitw.meetup.task;
 import java.util.UUID;
 
 import mitw.meetup.UHCMeetup;
-import mitw.meetup.board.Board;
 import mitw.meetup.scenarios.Scenario;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
@@ -46,9 +45,7 @@ public class ReleaseTask extends BukkitRunnable {
 			Bukkit.getWorld("world").setPVP(true);
 			GameStatus.set(GameStatus.PVP);
 
-			for (Board board : UHCMeetup.getInstance().getSidebarManager().getPlayerBoards().values()) {
-				board.setColoredTag();
-			}
+			Bukkit.getOnlinePlayers().forEach(player -> UHCMeetup.getInstance().getPlayerManager().setColoredTag(player));
 
 			new GameTask().runTaskTimer(UHCMeetup.getInstance(), 0L, 20L);
 			new PVPBorderTask().runTaskTimer(UHCMeetup.getInstance(), 0L, 20L);

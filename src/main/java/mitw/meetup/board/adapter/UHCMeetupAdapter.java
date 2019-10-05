@@ -2,8 +2,7 @@ package mitw.meetup.board.adapter;
 
 import mitw.meetup.Lang;
 import mitw.meetup.UHCMeetup;
-import mitw.meetup.board.Board;
-import mitw.meetup.board.BoardAdapter;
+import mitw.meetup.board.FrameAdapter;
 import mitw.meetup.enums.GameStatus;
 import mitw.meetup.player.PlayerProfile;
 import mitw.meetup.scenarios.Scenario;
@@ -15,18 +14,12 @@ import mitw.meetup.util.CStringBuffer;
 import mitw.meetup.util.Util;
 import net.development.mitw.utils.StringUtil;
 import org.bukkit.entity.Player;
-import org.bukkit.scoreboard.Scoreboard;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UHCMeetupAdapter implements BoardAdapter {
-
-    @Override
-    public long getInterval() {
-        return 2;
-    }
+public class UHCMeetupAdapter implements FrameAdapter {
 
     @Override
     public String getTitle(Player player) {
@@ -34,7 +27,7 @@ public class UHCMeetupAdapter implements BoardAdapter {
     }
 
     @Override
-    public List<String> getScoreboard(Player player, Board board) {
+    public List<String> getLines(Player player) {
         List<String> lines = new ArrayList<>();
 
         String type = this.getType(player);
@@ -74,16 +67,6 @@ public class UHCMeetupAdapter implements BoardAdapter {
         }
 
         return lines;
-    }
-
-    @Override
-    public void onScoreboardCreate(Player player, Scoreboard board) {
-
-    }
-
-    @Override
-    public void preLoop() {
-
     }
 
     public String getType(Player player) {

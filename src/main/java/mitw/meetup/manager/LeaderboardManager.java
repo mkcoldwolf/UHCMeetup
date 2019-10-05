@@ -6,10 +6,7 @@ import mitw.meetup.player.database.UHCMeetupDatabase;
 import org.bukkit.Bukkit;
 
 import java.sql.SQLException;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class LeaderboardManager {
@@ -36,13 +33,8 @@ public class LeaderboardManager {
     }
 
     public String getRatingPosition(final String name) {
-        int i = 1;
-        for (final String name2 : getRatingTop().keySet()) {
-            if (name.equalsIgnoreCase(name2))
-                return i + "";
-            i++;
-        }
-        return "unkwown";
+        int i = new ArrayList<>(ratingTop.keySet()).indexOf(name);
+        return i == -1 ? "unkwown" : i + "";
     }
 
     public void updateTops() {
@@ -70,7 +62,7 @@ public class LeaderboardManager {
                         })
                         .run();
                 this.ratingTop = ratingTop.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
-                        .limit(10).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
+                        .limit(1000).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
             }
             {
                 final Map<String, Integer> top = new HashMap<>();

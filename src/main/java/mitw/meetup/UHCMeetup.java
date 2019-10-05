@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.UUID;
 
 import lombok.Getter;
-import mitw.meetup.board.BoardManager;
+import mitw.meetup.board.Frame;
 import mitw.meetup.board.adapter.UHCMeetupAdapter;
 import mitw.meetup.impl.MeetupChatHandler;
 import mitw.meetup.impl.NocleanTimer;
@@ -45,9 +45,6 @@ public class UHCMeetup extends JavaPlugin {
 	public static int server;
 
 	@Getter
-	private BoardManager sidebarManager;
-
-	@Getter
 	private LeaderboardManager leaderboardManager;
 
 	@Getter
@@ -69,7 +66,8 @@ public class UHCMeetup extends JavaPlugin {
 		this.arenaManager = new ArenaManager();
 		this.kitManager = new KitManager();
 		this.playerManager = new PlayerManager(this);
-		this.setBoardManager(new BoardManager(this, new UHCMeetupAdapter()));
+
+		new Frame(this, new UHCMeetupAdapter());
 
 		GameStatus.set(GameStatus.LOADING);
 
@@ -141,11 +139,6 @@ public class UHCMeetup extends JavaPlugin {
 		canbreak.add(Material.LOG_2);
 		canbreak.add(Material.OBSIDIAN);
 		canbreak.add(Material.ANVIL);
-	}
-
-	private void setBoardManager(final BoardManager manager) {
-		this.sidebarManager = manager;
-		this.sidebarManager.runTaskTimerAsynchronously(this, manager.getAdapter().getInterval(), manager.getAdapter().getInterval());
 	}
 
 }

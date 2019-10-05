@@ -5,7 +5,6 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import mitw.meetup.Lang;
 import mitw.meetup.UHCMeetup;
-import mitw.meetup.board.Board;
 import mitw.meetup.manager.ArenaManager;
 import mitw.meetup.player.PlayerProfile;
 import mitw.meetup.scenarios.ScenarioMenu;
@@ -31,13 +30,12 @@ public class JoinListener implements Listener {
 
 		e.setJoinMessage(null);
 
-		plugin.getSidebarManager().getPlayerBoards().put(p.getUniqueId(), new Board(plugin, p, plugin.getSidebarManager().getAdapter()));
-
 		final PlayerProfile uHCPlayerProfile = new PlayerProfile(p);
 		plugin.getGameManager().profiles.put(p.getUniqueId(), uHCPlayerProfile);
 		uHCPlayerProfile.load();
 
 		switch (GameStatus.get()) {
+		case TELEPORT:
 		case LOADING:
 			break;
 		case WAITING:
@@ -65,12 +63,7 @@ public class JoinListener implements Listener {
 				}
 			}, 5);
 			break;
-		case TELEPORT:
-			break;
 		case PVP:
-			plugin.getPlayerManager().setPlayerSpec(p, false);
-			p.teleport(ArenaManager.center);
-			break;
 		case FINISH:
 			plugin.getPlayerManager().setPlayerSpec(p, false);
 			p.teleport(ArenaManager.center);

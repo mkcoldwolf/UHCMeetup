@@ -3,6 +3,7 @@ package mitw.meetup.listener;
 import lombok.RequiredArgsConstructor;
 import mitw.meetup.Lang;
 import mitw.meetup.UHCMeetup;
+import mitw.meetup.border.barrier.VisualRunnable;
 import mitw.meetup.player.PlayerProfile;
 import mitw.meetup.scenarios.ScenarioMenu;
 import org.bukkit.Bukkit;
@@ -22,8 +23,8 @@ public class QuitListener implements Listener {
 	@EventHandler
 	public void onPlayerQuit(final PlayerQuitEvent e) {
 		final Player p = e.getPlayer();
-		plugin.getSidebarManager().getPlayerBoards().remove(p.getUniqueId());
 		e.setQuitMessage(null);
+		VisualRunnable.removePlayer(p);
 		if (GameStatus.is(GameStatus.PVP) && plugin.getGameManager().players.contains(p.getUniqueId())) {
 			e.getPlayer().setHealth(0);
 		}
